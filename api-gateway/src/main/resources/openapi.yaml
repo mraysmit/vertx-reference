@@ -1,0 +1,376 @@
+openapi: 3.0.3
+info:
+  title: API Gateway
+  description: API Gateway for the Vert.x Reference Project
+  version: 1.0.0
+  contact:
+    name: Mars Development Team
+    email: dev@mars.dev
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns the status of the API Gateway
+      operationId: getHealth
+      tags:
+        - Health
+      responses:
+        '200':
+          description: API Gateway is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+  /api/service-one/{id}:
+    get:
+      summary: Get item from Service One
+      description: Returns an item from Service One by ID
+      operationId: getServiceOneItem
+      tags:
+        - Service One
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the item to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Item retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOneItem'
+        '404':
+          description: Item not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update item in Service One
+      description: Updates an existing item in Service One
+      operationId: updateServiceOneItem
+      tags:
+        - Service One
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the item to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceOneItemRequest'
+      responses:
+        '200':
+          description: Item updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOneItem'
+        '404':
+          description: Item not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete item from Service One
+      description: Deletes an item from Service One
+      operationId: deleteServiceOneItem
+      tags:
+        - Service One
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the item to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Item deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          description: Item not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/service-one:
+    get:
+      summary: List all items from Service One
+      description: Returns a list of all items from Service One
+      operationId: listServiceOneItems
+      tags:
+        - Service One
+      responses:
+        '200':
+          description: Items retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceOneItem'
+                  count:
+                    type: integer
+                    description: Number of items
+                    example: 2
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create item in Service One
+      description: Creates a new item in Service One
+      operationId: createServiceOneItem
+      tags:
+        - Service One
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceOneItemRequest'
+      responses:
+        '200':
+          description: Item created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOneItem'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/service-two/{id}:
+    get:
+      summary: Get item from Service Two
+      description: Returns an item from Service Two by ID
+      operationId: getServiceTwoItem
+      tags:
+        - Service Two
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the item to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Item retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTwoItem'
+        '404':
+          description: Item not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/service-two:
+    post:
+      summary: Create item in Service Two
+      description: Creates a new item in Service Two
+      operationId: createServiceTwoItem
+      tags:
+        - Service Two
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceTwoItemRequest'
+      responses:
+        '200':
+          description: Item created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTwoItem'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the API Gateway
+          example: UP
+        timestamp:
+          type: integer
+          format: int64
+          description: Timestamp of the health check
+          example: 1625097600000
+      required:
+        - status
+        - timestamp
+    ServiceOneItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the item
+          example: item-123
+        name:
+          type: string
+          description: Name of the item
+          example: Test Item
+        description:
+          type: string
+          description: Description of the item
+          example: This is a test item
+      required:
+        - id
+        - name
+    ServiceOneItemRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the item
+          example: Test Item
+        description:
+          type: string
+          description: Description of the item
+          example: This is a test item
+      required:
+        - name
+    ServiceTwoItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the item
+          example: item-456
+        name:
+          type: string
+          description: Name of the item
+          example: Test Item
+        description:
+          type: string
+          description: Description of the item
+          example: This is a test item
+      required:
+        - id
+        - name
+    ServiceTwoItemRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the item
+          example: Test Item
+        description:
+          type: string
+          description: Description of the item
+          example: This is a test item
+      required:
+        - name
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error type
+          example: Not Found
+        message:
+          type: string
+          description: Error message
+          example: Item not found
+        path:
+          type: string
+          description: Request path
+          example: /api/service-one/item-123
+      required:
+        - error
+        - message
+        - path
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Success flag
+          example: true
+        message:
+          type: string
+          description: Success message
+          example: Item deleted successfully
+        id:
+          type: string
+          description: ID of the affected item
+          example: item-123
+      required:
+        - success
+        - message

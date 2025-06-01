@@ -1,0 +1,33 @@
+service:
+  address: service.two
+  name: Service Two
+http:
+  enabled: true
+  port: 8082
+  host: 0.0.0.0
+metrics:
+  enabled: true
+  prometheus:
+    enabled: true
+    port: 9092
+logging:
+  level: INFO
+thread-pools:
+  worker:
+    size: 20
+    max-execute-time: 60000
+  event-loop:
+    size: 2
+weather-api:
+  enabled: false
+  api-key: your-api-key-here
+  base-url: https://api.example.com/weather
+  timeout: 5000
+  cache:
+    enabled: true
+    ttl: 3600000
+simulation:
+  failure-rate: 0.1
+  delay:
+    min: 50
+    max: 200

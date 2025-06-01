@@ -1,0 +1,186 @@
+2025-06-01 14:58:39.841 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: fallback-breaker
+2025-06-01 14:58:39.844 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 14:58:39.844 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: fallback-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 14:58:39.844 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: fallback-breaker
+2025-06-01 14:58:39.844 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 14:58:39.844 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: fallback-breaker
+2025-06-01 14:58:39.868 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker fallback-breaker created successfully
+2025-06-01 14:58:39.939 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: failing-breaker (maxFailures=3, timeout=1000ms, resetTimeout=5000ms)
+2025-06-01 14:58:39.940 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: failing-breaker
+2025-06-01 14:58:39.940 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 14:58:39.940 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: failing-breaker
+2025-06-01 14:58:39.941 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker failing-breaker created successfully
+2025-06-01 14:58:39.994 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: success-breaker
+2025-06-01 14:58:39.994 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 14:58:39.994 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: success-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 14:58:39.994 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: success-breaker
+2025-06-01 14:58:39.994 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 14:58:39.994 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: success-breaker
+2025-06-01 14:58:39.995 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker success-breaker created successfully
+2025-06-01 14:58:40.033 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: test-breaker
+2025-06-01 14:58:40.033 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 14:58:40.033 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: test-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 14:58:40.033 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: test-breaker
+2025-06-01 14:58:40.033 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 14:58:40.033 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: test-breaker
+2025-06-01 14:58:40.034 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker test-breaker created successfully
+2025-06-01 14:58:40.072 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: custom-breaker (maxFailures=3, timeout=5000ms, resetTimeout=15000ms)
+2025-06-01 14:58:40.072 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: custom-breaker
+2025-06-01 14:58:40.072 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 14:58:40.072 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: custom-breaker
+2025-06-01 14:58:40.072 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker custom-breaker created successfully
+2025-06-01 15:34:42.319 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: fallback-breaker
+2025-06-01 15:34:42.321 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:34:42.321 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: fallback-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:34:42.321 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: fallback-breaker
+2025-06-01 15:34:42.321 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:34:42.321 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: fallback-breaker
+2025-06-01 15:34:42.337 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker fallback-breaker created successfully
+2025-06-01 15:34:42.402 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: failing-breaker (maxFailures=3, timeout=1000ms, resetTimeout=5000ms)
+2025-06-01 15:34:42.402 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: failing-breaker
+2025-06-01 15:34:42.403 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:34:42.403 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: failing-breaker
+2025-06-01 15:34:42.404 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker failing-breaker created successfully
+2025-06-01 15:34:42.449 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: success-breaker
+2025-06-01 15:34:42.449 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:34:42.449 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: success-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:34:42.449 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: success-breaker
+2025-06-01 15:34:42.449 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:34:42.449 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: success-breaker
+2025-06-01 15:34:42.450 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker success-breaker created successfully
+2025-06-01 15:34:42.485 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: test-breaker
+2025-06-01 15:34:42.485 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:34:42.485 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: test-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:34:42.485 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: test-breaker
+2025-06-01 15:34:42.485 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:34:42.485 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: test-breaker
+2025-06-01 15:34:42.486 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker test-breaker created successfully
+2025-06-01 15:34:42.522 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: custom-breaker (maxFailures=3, timeout=5000ms, resetTimeout=15000ms)
+2025-06-01 15:34:42.522 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: custom-breaker
+2025-06-01 15:34:42.522 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:34:42.522 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: custom-breaker
+2025-06-01 15:34:42.523 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker custom-breaker created successfully
+2025-06-01 15:35:58.892 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: fallback-breaker
+2025-06-01 15:35:58.894 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:35:58.894 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: fallback-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:35:58.894 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: fallback-breaker
+2025-06-01 15:35:58.894 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:35:58.894 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: fallback-breaker
+2025-06-01 15:35:58.917 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker fallback-breaker created successfully
+2025-06-01 15:35:58.998 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: failing-breaker (maxFailures=3, timeout=1000ms, resetTimeout=5000ms)
+2025-06-01 15:35:58.998 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: failing-breaker
+2025-06-01 15:35:58.998 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:35:58.998 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: failing-breaker
+2025-06-01 15:35:58.999 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker failing-breaker created successfully
+2025-06-01 15:35:59.053 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: success-breaker
+2025-06-01 15:35:59.054 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:35:59.054 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: success-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:35:59.054 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: success-breaker
+2025-06-01 15:35:59.054 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:35:59.054 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: success-breaker
+2025-06-01 15:35:59.054 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker success-breaker created successfully
+2025-06-01 15:35:59.093 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: test-breaker
+2025-06-01 15:35:59.094 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:35:59.094 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: test-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:35:59.094 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: test-breaker
+2025-06-01 15:35:59.094 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:35:59.094 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: test-breaker
+2025-06-01 15:35:59.094 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker test-breaker created successfully
+2025-06-01 15:35:59.133 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: custom-breaker (maxFailures=3, timeout=5000ms, resetTimeout=15000ms)
+2025-06-01 15:35:59.133 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: custom-breaker
+2025-06-01 15:35:59.133 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:35:59.133 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: custom-breaker
+2025-06-01 15:35:59.133 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker custom-breaker created successfully
+2025-06-01 15:37:03.171 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: fallback-breaker
+2025-06-01 15:37:03.172 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:37:03.172 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: fallback-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:37:03.172 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: fallback-breaker
+2025-06-01 15:37:03.173 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:37:03.173 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: fallback-breaker
+2025-06-01 15:37:03.187 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker fallback-breaker created successfully
+2025-06-01 15:37:03.249 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: failing-breaker (maxFailures=3, timeout=1000ms, resetTimeout=5000ms)
+2025-06-01 15:37:03.249 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: failing-breaker
+2025-06-01 15:37:03.249 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:37:03.249 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: failing-breaker
+2025-06-01 15:37:03.250 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker failing-breaker created successfully
+2025-06-01 15:37:03.287 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: success-breaker
+2025-06-01 15:37:03.287 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:37:03.287 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: success-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:37:03.287 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: success-breaker
+2025-06-01 15:37:03.287 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:37:03.287 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: success-breaker
+2025-06-01 15:37:03.288 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker success-breaker created successfully
+2025-06-01 15:37:03.320 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: test-breaker
+2025-06-01 15:37:03.320 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:37:03.320 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: test-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:37:03.320 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: test-breaker
+2025-06-01 15:37:03.320 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:37:03.320 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: test-breaker
+2025-06-01 15:37:03.321 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker test-breaker created successfully
+2025-06-01 15:37:03.354 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: custom-breaker (maxFailures=3, timeout=5000ms, resetTimeout=15000ms)
+2025-06-01 15:37:03.354 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: custom-breaker
+2025-06-01 15:37:03.355 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:37:03.355 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: custom-breaker
+2025-06-01 15:37:03.355 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker custom-breaker created successfully
+2025-06-01 15:49:28.007 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: fallback-breaker
+2025-06-01 15:49:28.008 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:49:28.008 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: fallback-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:49:28.009 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: fallback-breaker
+2025-06-01 15:49:28.010 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:49:28.010 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: fallback-breaker
+2025-06-01 15:49:28.025 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker fallback-breaker created successfully
+2025-06-01 15:49:28.092 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: failing-breaker (maxFailures=3, timeout=1000ms, resetTimeout=5000ms)
+2025-06-01 15:49:28.092 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: failing-breaker
+2025-06-01 15:49:28.092 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:49:28.092 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: failing-breaker
+2025-06-01 15:49:28.093 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker failing-breaker created successfully
+2025-06-01 15:49:28.132 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: success-breaker
+2025-06-01 15:49:28.132 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:49:28.132 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: success-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:49:28.132 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: success-breaker
+2025-06-01 15:49:28.132 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:49:28.132 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: success-breaker
+2025-06-01 15:49:28.133 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker success-breaker created successfully
+2025-06-01 15:49:28.166 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: test-breaker
+2025-06-01 15:49:28.166 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 15:49:28.167 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: test-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 15:49:28.167 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: test-breaker
+2025-06-01 15:49:28.167 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:49:28.167 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: test-breaker
+2025-06-01 15:49:28.167 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker test-breaker created successfully
+2025-06-01 15:49:28.199 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: custom-breaker (maxFailures=3, timeout=5000ms, resetTimeout=15000ms)
+2025-06-01 15:49:28.199 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: custom-breaker
+2025-06-01 15:49:28.199 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 15:49:28.199 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: custom-breaker
+2025-06-01 15:49:28.200 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker custom-breaker created successfully
+2025-06-01 19:02:19.090 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: fallback-breaker
+2025-06-01 19:02:19.092 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 19:02:19.092 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: fallback-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 19:02:19.092 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: fallback-breaker
+2025-06-01 19:02:19.092 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 19:02:19.092 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: fallback-breaker
+2025-06-01 19:02:19.105 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker fallback-breaker created successfully
+2025-06-01 19:02:19.170 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: failing-breaker (maxFailures=3, timeout=1000ms, resetTimeout=5000ms)
+2025-06-01 19:02:19.171 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: failing-breaker
+2025-06-01 19:02:19.171 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 19:02:19.171 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: failing-breaker
+2025-06-01 19:02:19.172 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker failing-breaker created successfully
+2025-06-01 19:02:19.209 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: success-breaker
+2025-06-01 19:02:19.209 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 19:02:19.209 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: success-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 19:02:19.209 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: success-breaker
+2025-06-01 19:02:19.209 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 19:02:19.210 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: success-breaker
+2025-06-01 19:02:19.210 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker success-breaker created successfully
+2025-06-01 19:02:19.243 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker with default settings: test-breaker
+2025-06-01 19:02:19.243 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Default settings: maxFailures=5, timeout=10000ms, resetTimeout=30000ms
+2025-06-01 19:02:19.243 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: test-breaker (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-01 19:02:19.243 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: test-breaker
+2025-06-01 19:02:19.243 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 19:02:19.243 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: test-breaker
+2025-06-01 19:02:19.244 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker test-breaker created successfully
+2025-06-01 19:02:19.276 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: custom-breaker (maxFailures=3, timeout=5000ms, resetTimeout=15000ms)
+2025-06-01 19:02:19.276 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Configuring circuit breaker options for: custom-breaker
+2025-06-01 19:02:19.276 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Circuit breaker options configured
+2025-06-01 19:02:19.276 [main] DEBUG d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker instance: custom-breaker
+2025-06-01 19:02:19.276 [main] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker custom-breaker created successfully

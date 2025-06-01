@@ -1,0 +1,27 @@
+service:
+  address: service.one
+  name: Service One
+http:
+  enabled: true
+  port: 8081
+  host: 0.0.0.0
+metrics:
+  enabled: true
+  prometheus:
+    enabled: true
+    port: 9091
+logging:
+  level: INFO
+thread-pools:
+  worker:
+    size: 20
+    max-execute-time: 60000
+  event-loop:
+    size: 2
+database:
+  enabled: false
+  url: jdbc:h2:mem:service_one;DB_CLOSE_DELAY=-1
+  driver-class: org.h2.Driver
+  username: sa
+  password: ""
+  max-pool-size: 10

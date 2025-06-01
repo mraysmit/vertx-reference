@@ -1,0 +1,49 @@
+http:
+  port: 8080
+  host: 0.0.0.0
+services:
+  service-one:
+    address: service.one
+    timeout: 5000
+    circuit-breaker:
+      max-failures: 5
+      timeout: 10000
+      reset-timeout: 30000
+  service-two:
+    address: service.two
+    timeout: 5000
+    circuit-breaker:
+      max-failures: 5
+      timeout: 10000
+      reset-timeout: 30000
+metrics:
+  enabled: true
+  prometheus:
+    enabled: true
+    port: 9090
+cors:
+  enabled: true
+  allowed-origins:
+    - "*"
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allowed-headers:
+    - x-requested-with
+    - Access-Control-Allow-Origin
+    - origin
+    - Content-Type
+    - accept
+    - Authorization
+logging:
+  level: INFO
+security:
+  enabled: false
+  jwt:
+    keystore:
+      path: keystore.jceks
+      type: jceks
+      password: secret

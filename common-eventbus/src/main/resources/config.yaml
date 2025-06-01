@@ -1,0 +1,64 @@
+# EventBus Configuration
+eventbus:
+  # Default timeout for event bus messages in milliseconds
+  default-timeout: 30000
+  
+  # Cluster configuration (if using clustered event bus)
+  cluster:
+    enabled: false
+    host: localhost
+    port: 0  # 0 means auto-assign
+    public-host: localhost
+    public-port: 0  # 0 means auto-assign
+  
+  # Message handling configuration
+  message-handling:
+    # Maximum size of messages in bytes (default: 1MB)
+    max-message-size: 1048576
+    # Whether to compress messages larger than a threshold
+    compression:
+      enabled: false
+      threshold: 102400  # 100KB
+  
+  # Metrics configuration
+  metrics:
+    enabled: true
+    # Whether to track message sizes
+    track-sizes: true
+    # Whether to track message processing times
+    track-processing-times: true
+  
+  # Security configuration
+  security:
+    # Whether to enable authentication for the event bus
+    authentication:
+      enabled: false
+      # Authentication provider type (e.g., jwt, basic, etc.)
+      type: none
+    
+    # Whether to enable authorization for the event bus
+    authorization:
+      enabled: false
+      # Authorization provider type (e.g., role-based, permission-based, etc.)
+      type: none
+  
+  # Logging configuration
+  logging:
+    # Whether to log message details (can be verbose)
+    log-message-details: false
+    # Whether to log message failures
+    log-failures: true
+    # Whether to log message timeouts
+    log-timeouts: true
+
+# Sample addresses configuration
+addresses:
+  # Example service addresses
+  services:
+    service-one: service.one
+    service-two: service.two
+  
+  # Example broadcast addresses
+  broadcasts:
+    system-events: system.events
+    notifications: user.notifications

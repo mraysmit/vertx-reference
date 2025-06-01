@@ -1,0 +1,339 @@
+2025-06-01 13:17:04.803 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:17:04.868 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:17:04.908 [vert.x-eventloop-thread-0] ERROR d.m.vertx.common.config.ConfigLoader - Failed to load configuration
+io.vertx.core.file.FileSystemException: Unable to read file at path 'non-existent-file.json'
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1070)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1063)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1174)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1156)
+	at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:180)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:277)
+	at io.vertx.core.impl.ContextBase.lambda$internalExecuteBlocking$2(ContextBase.java:199)
+	at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.nio.file.NoSuchFileException: non-existent-file.json
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3292)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1067)
+	... 11 common frames omitted
+2025-06-01 13:17:04.959 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:17:04.960 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:17:04.966 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:17:04.972 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:17:04.972 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:17:04.972 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:17:04.973 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:17:05.023 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:17:05.025 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:17:05.089 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:17:05.089 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:17:05.090 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:17:05.090 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:17:05.090 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:17:05.091 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:17:05.091 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:17:05.127 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:17:05.127 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:17:05.128 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-01 13:18:00.341 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:18:00.405 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:18:00.447 [vert.x-eventloop-thread-0] ERROR d.m.vertx.common.config.ConfigLoader - Failed to load configuration
+io.vertx.core.file.FileSystemException: Unable to read file at path 'non-existent-file.json'
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1070)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1063)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1174)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1156)
+	at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:180)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:277)
+	at io.vertx.core.impl.ContextBase.lambda$internalExecuteBlocking$2(ContextBase.java:199)
+	at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.nio.file.NoSuchFileException: non-existent-file.json
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3292)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1067)
+	... 11 common frames omitted
+2025-06-01 13:18:00.494 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:18:00.495 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:18:00.497 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:18:00.501 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:18:00.501 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:18:00.502 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:18:00.502 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:18:00.535 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:18:00.536 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:18:00.575 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:18:00.576 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:18:00.576 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:18:00.577 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:18:00.577 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:18:00.578 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:18:00.578 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:18:00.609 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:18:00.610 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:18:00.610 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-01 13:21:24.915 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:21:24.979 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:21:25.021 [vert.x-eventloop-thread-0] ERROR d.m.vertx.common.config.ConfigLoader - Failed to load configuration
+io.vertx.core.file.FileSystemException: Unable to read file at path 'non-existent-file.json'
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1070)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1063)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1174)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1156)
+	at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:180)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:277)
+	at io.vertx.core.impl.ContextBase.lambda$internalExecuteBlocking$2(ContextBase.java:199)
+	at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.nio.file.NoSuchFileException: non-existent-file.json
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3292)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1067)
+	... 11 common frames omitted
+2025-06-01 13:21:25.064 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:21:25.065 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:21:25.068 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:21:25.071 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:21:25.072 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:21:25.072 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:21:25.072 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:21:25.106 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:21:25.107 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:21:25.145 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:21:25.146 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:21:25.147 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:21:25.147 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:21:25.147 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:21:25.148 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:21:25.148 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:21:25.179 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:21:25.179 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:21:25.180 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-01 13:23:55.577 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:23:55.645 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:23:55.689 [vert.x-eventloop-thread-0] ERROR d.m.vertx.common.config.ConfigLoader - Failed to load configuration
+io.vertx.core.file.FileSystemException: Unable to read file at path 'non-existent-file.json'
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1070)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1063)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1174)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1156)
+	at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:180)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:277)
+	at io.vertx.core.impl.ContextBase.lambda$internalExecuteBlocking$2(ContextBase.java:199)
+	at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.nio.file.NoSuchFileException: non-existent-file.json
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3292)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1067)
+	... 11 common frames omitted
+2025-06-01 13:23:55.737 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:23:55.738 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:23:55.742 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:23:55.745 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:23:55.746 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:23:55.746 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:23:55.746 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:23:55.780 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:23:55.781 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:23:55.816 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:23:55.816 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:23:55.817 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:23:55.817 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:23:55.817 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:23:55.818 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:23:55.819 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:23:55.857 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:23:55.858 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:23:55.859 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-01 13:26:42.995 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:26:43.061 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:26:43.104 [vert.x-eventloop-thread-0] ERROR d.m.vertx.common.config.ConfigLoader - Failed to load configuration
+io.vertx.core.file.FileSystemException: Unable to read file at path 'non-existent-file.json'
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1070)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1063)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1174)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1156)
+	at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:180)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:277)
+	at io.vertx.core.impl.ContextBase.lambda$internalExecuteBlocking$2(ContextBase.java:199)
+	at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.nio.file.NoSuchFileException: non-existent-file.json
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3292)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1067)
+	... 11 common frames omitted
+2025-06-01 13:26:43.153 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:26:43.154 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:26:43.157 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:26:43.161 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:26:43.161 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:26:43.162 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:26:43.162 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:26:43.203 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:26:43.204 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:26:43.237 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:26:43.238 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:26:43.239 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:26:43.239 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:26:43.239 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:26:43.240 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:26:43.240 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:26:43.271 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:26:43.272 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:26:43.273 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-01 13:33:55.502 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:33:55.565 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:33:55.606 [vert.x-eventloop-thread-0] ERROR d.m.vertx.common.config.ConfigLoader - Failed to load configuration
+io.vertx.core.file.FileSystemException: Unable to read file at path 'non-existent-file.json'
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1070)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1063)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1174)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1156)
+	at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:180)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:277)
+	at io.vertx.core.impl.ContextBase.lambda$internalExecuteBlocking$2(ContextBase.java:199)
+	at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.nio.file.NoSuchFileException: non-existent-file.json
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3292)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1067)
+	... 11 common frames omitted
+2025-06-01 13:33:55.646 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:33:55.647 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:33:55.650 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:33:55.656 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:33:55.656 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:33:55.656 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:33:55.657 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:33:55.690 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:33:55.691 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:33:55.724 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:33:55.724 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:33:55.725 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:33:55.725 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:33:55.725 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:33:55.726 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:33:55.726 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:33:55.762 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:33:55.763 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:33:55.764 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-01 13:41:28.143 [main] INFO  d.m.vertx.common.config.ConfigLoader - Loading YAML configuration from: C:\Users\mraysmit\AppData\Local\Temp\config-test6257370112627053418.yaml
+2025-06-01 13:41:28.272 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:41:28.312 [main] INFO  d.m.vertx.common.config.ConfigLoader - Loading YAML configuration from: non-existent-file.yaml
+2025-06-01 13:41:28.366 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:41:28.366 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:41:28.370 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:41:28.375 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:41:28.375 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:41:28.376 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:41:28.377 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:41:28.412 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:41:28.413 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:41:28.455 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:41:28.456 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:41:28.457 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:41:28.457 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:41:28.457 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:41:28.458 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:41:28.459 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:41:28.492 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:41:28.492 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:41:28.493 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-01 13:42:31.848 [main] INFO  d.m.vertx.common.config.ConfigLoader - Loading YAML configuration from: C:\Users\mraysmit\AppData\Local\Temp\config-test17152767923246733389.yaml
+2025-06-01 13:42:31.960 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:42:32.026 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully
+2025-06-01 13:42:32.064 [main] INFO  d.m.vertx.common.config.ConfigLoader - Loading YAML configuration from: non-existent-file.yaml
+2025-06-01 13:42:32.069 [vert.x-eventloop-thread-0] ERROR d.m.vertx.common.config.ConfigLoader - Failed to load configuration
+io.vertx.core.file.FileSystemException: Unable to read file at path 'non-existent-file.yaml'
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1070)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1063)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1174)
+	at io.vertx.core.file.impl.FileSystemImpl$BlockingAction.handle(FileSystemImpl.java:1156)
+	at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:180)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:277)
+	at io.vertx.core.impl.ContextBase.lambda$internalExecuteBlocking$2(ContextBase.java:199)
+	at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.nio.file.NoSuchFileException: non-existent-file.yaml
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3292)
+	at io.vertx.core.file.impl.FileSystemImpl$16.perform(FileSystemImpl.java:1067)
+	... 11 common frames omitted
+2025-06-01 13:42:32.116 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:42:32.117 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:42:32.120 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:42:32.124 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:42:32.125 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-01 13:42:32.125 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-01 13:42:32.125 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:42:32.159 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:42:32.160 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-01 13:42:32.200 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:42:32.201 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-01 13:42:32.202 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-01 13:42:32.202 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-01 13:42:32.202 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-01 13:42:32.203 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-01 13:42:32.203 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-01 13:42:32.234 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-01 13:42:32.235 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-01 13:42:32.235 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
