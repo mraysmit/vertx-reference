@@ -3,7 +3,7 @@ package dev.mars.vertx.service.one;
 import dev.mars.vertx.common.eventbus.EventBusService;
 import dev.mars.vertx.service.one.handler.ItemHandler;
 import dev.mars.vertx.service.one.repository.InMemoryItemRepository;
-import dev.mars.vertx.service.one.repository.ItemRepository;
+import dev.mars.vertx.service.one.repository.ItemRepositoryInterface;
 import dev.mars.vertx.service.one.service.ItemService;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
@@ -25,7 +25,7 @@ public class ServiceOneVerticle extends AbstractVerticle {
     private MessageConsumer<JsonObject> consumer;
 
     // Components
-    private ItemRepository itemRepository;
+    private ItemRepositoryInterface itemRepositoryInterface;
     private ItemService itemService;
     private ItemHandler itemHandler;
 
@@ -55,10 +55,10 @@ public class ServiceOneVerticle extends AbstractVerticle {
         logger.info("Initializing components");
 
         // Create repository
-        itemRepository = new InMemoryItemRepository();
+        itemRepositoryInterface = new InMemoryItemRepository();
 
         // Create service
-        itemService = new ItemService(itemRepository);
+        itemService = new ItemService(itemRepositoryInterface);
 
         // Create handler
         itemHandler = new ItemHandler(itemService);

@@ -1,13 +1,11 @@
 package dev.mars.vertx.service.one.service;
 
 import dev.mars.vertx.service.one.model.Item;
-import dev.mars.vertx.service.one.repository.ItemRepository;
+import dev.mars.vertx.service.one.repository.ItemRepositoryInterface;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 /**
  * Service class for Item operations.
@@ -16,15 +14,15 @@ import java.util.List;
 public class ItemService {
     private static final Logger logger = LoggerFactory.getLogger(ItemService.class);
     
-    private final ItemRepository itemRepository;
+    private final ItemRepositoryInterface itemRepositoryInterface;
     
     /**
      * Constructor.
      *
-     * @param itemRepository the item repository
+     * @param itemRepositoryInterface the item repository
      */
-    public ItemService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
+    public ItemService(ItemRepositoryInterface itemRepositoryInterface) {
+        this.itemRepositoryInterface = itemRepositoryInterface;
     }
     
     /**
@@ -34,7 +32,7 @@ public class ItemService {
      */
     public Future<Void> initialize() {
         logger.info("Initializing item service");
-        return itemRepository.initialize();
+        return itemRepositoryInterface.initialize();
     }
     
     /**
@@ -45,7 +43,7 @@ public class ItemService {
      */
     public Future<Item> getItem(String id) {
         logger.info("Getting item with ID: {}", id);
-        return itemRepository.findById(id);
+        return itemRepositoryInterface.findById(id);
     }
     
     /**
@@ -61,7 +59,7 @@ public class ItemService {
         item.setName(itemData.getString("name", "Unnamed"));
         item.setDescription(itemData.getString("description", ""));
         
-        return itemRepository.save(item);
+        return itemRepositoryInterface.save(item);
     }
     
     /**
@@ -74,7 +72,7 @@ public class ItemService {
     public Future<Item> updateItem(String id, JsonObject itemData) {
         logger.info("Updating item with ID: {}", id);
         
-        return itemRepository.findById(id)
+        return itemRepositoryInterface.findById(id)
             .compose(existingItem -> {
                 // Update fields if present in the request
                 if (itemData.containsKey("name")) {
@@ -85,7 +83,7 @@ public class ItemService {
                     existingItem.setDescription(itemData.getString("description"));
                 }
                 
-                return itemRepository.save(existingItem);
+                return itemRepositoryInterface.save(existingItem);
             });
     }
     
@@ -98,7 +96,7 @@ public class ItemService {
     public Future<JsonObject> deleteItem(String id) {
         logger.info("Deleting item with ID: {}", id);
         
-        return itemRepository.deleteById(id)
+        return itemRepositoryInterface.deleteById(id)
             .compose(deleted -> {
                 if (deleted) {
                     return Future.succeededFuture(new JsonObject()
@@ -119,7 +117,7 @@ public class ItemService {
     public Future<JsonObject> listItems() {
         logger.info("Listing all items");
         
-        return itemRepository.findAll()
+        return itemRepositoryInterface.findAll()
             .compose(items -> {
                 JsonObject result = new JsonObject()
                     .put("items", items.stream().map(Item::toJson).toArray())

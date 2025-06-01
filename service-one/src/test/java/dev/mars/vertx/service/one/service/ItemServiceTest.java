@@ -1,7 +1,7 @@
 package dev.mars.vertx.service.one.service;
 
 import dev.mars.vertx.service.one.model.Item;
-import dev.mars.vertx.service.one.repository.ItemRepository;
+import dev.mars.vertx.service.one.repository.ItemRepositoryInterface;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
 import io.vertx.junit5.VertxExtension;
@@ -247,9 +247,9 @@ class ItemServiceTest {
     }
 
     /**
-     * Mock implementation of ItemRepository for testing.
+     * Mock implementation of ItemRepositoryInterface for testing.
      */
-    private static class MockItemRepository implements ItemRepository {
+    private static class MockItemRepository implements ItemRepositoryInterface {
         private final Map<String, Item> items = new HashMap<>();
         private boolean initialized = false;
 

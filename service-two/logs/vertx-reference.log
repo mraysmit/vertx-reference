@@ -1,0 +1,105 @@
+2025-06-01 22:59:44.789 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"non-existent-city"}
+2025-06-01 22:59:44.820 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: non-existent-city
+2025-06-01 22:59:44.840 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"cities"}
+2025-06-01 22:59:44.840 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Listing all cities
+2025-06-01 22:59:44.846 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","city":"London","days":5}
+2025-06-01 22:59:44.847 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 22:59:44.866 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"stats"}
+2025-06-01 22:59:44.866 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting service statistics
+2025-06-01 22:59:44.868 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"London"}
+2025-06-01 22:59:44.869 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 22:59:44.871 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","days":5}
+2025-06-01 22:59:44.871 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting forecast: {"action":"forecast","days":5}
+2025-06-01 22:59:44.874 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {}
+2025-06-01 22:59:44.874 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for a random city
+2025-06-01 22:59:44.876 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"unknown"}
+2025-06-01 23:00:20.383 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"non-existent-city"}
+2025-06-01 23:00:20.413 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: non-existent-city
+2025-06-01 23:00:20.433 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"cities"}
+2025-06-01 23:00:20.434 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Listing all cities
+2025-06-01 23:00:20.441 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","city":"London","days":5}
+2025-06-01 23:00:20.441 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:00:20.454 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"stats"}
+2025-06-01 23:00:20.454 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting service statistics
+2025-06-01 23:00:20.457 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"London"}
+2025-06-01 23:00:20.457 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:00:20.460 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","days":5}
+2025-06-01 23:00:20.460 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting forecast: {"action":"forecast","days":5}
+2025-06-01 23:00:20.463 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {}
+2025-06-01 23:00:20.464 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for a random city
+2025-06-01 23:00:20.465 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"unknown"}
+2025-06-01 23:01:41.825 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"non-existent-city"}
+2025-06-01 23:01:41.858 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: non-existent-city
+2025-06-01 23:01:41.883 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"cities"}
+2025-06-01 23:01:41.884 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Listing all cities
+2025-06-01 23:01:41.891 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","city":"London","days":5}
+2025-06-01 23:01:41.892 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:01:41.905 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"stats"}
+2025-06-01 23:01:41.906 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting service statistics
+2025-06-01 23:01:41.909 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"London"}
+2025-06-01 23:01:41.909 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:01:41.912 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","days":5}
+2025-06-01 23:01:41.912 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting forecast: {"action":"forecast","days":5}
+2025-06-01 23:01:41.916 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {}
+2025-06-01 23:01:41.916 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for a random city
+2025-06-01 23:01:41.920 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"unknown"}
+2025-06-01 23:03:15.226 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"non-existent-city"}
+2025-06-01 23:03:15.256 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: non-existent-city
+2025-06-01 23:03:15.277 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"cities"}
+2025-06-01 23:03:15.278 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Listing all cities
+2025-06-01 23:03:15.284 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","city":"London","days":5}
+2025-06-01 23:03:15.285 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:03:15.297 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"stats"}
+2025-06-01 23:03:15.297 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting service statistics
+2025-06-01 23:03:15.300 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"London"}
+2025-06-01 23:03:15.300 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:03:15.303 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","days":5}
+2025-06-01 23:03:15.303 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting forecast: {"action":"forecast","days":5}
+2025-06-01 23:03:15.307 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {}
+2025-06-01 23:03:15.307 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for a random city
+2025-06-01 23:03:15.311 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"unknown"}
+2025-06-01 23:04:14.368 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"non-existent-city"}
+2025-06-01 23:04:14.401 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: non-existent-city
+2025-06-01 23:04:14.422 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"cities"}
+2025-06-01 23:04:14.422 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Listing all cities
+2025-06-01 23:04:14.429 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","city":"London","days":5}
+2025-06-01 23:04:14.430 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:04:14.434 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"stats"}
+2025-06-01 23:04:14.434 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting service statistics
+2025-06-01 23:04:14.437 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"city":"London"}
+2025-06-01 23:04:14.438 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for city: London
+2025-06-01 23:04:14.441 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"forecast","days":5}
+2025-06-01 23:04:14.442 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting forecast: {"action":"forecast","days":5}
+2025-06-01 23:04:14.445 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {}
+2025-06-01 23:04:14.446 [main] DEBUG d.m.v.s.two.handler.WeatherHandler - Getting weather for a random city
+2025-06-01 23:04:14.448 [main] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"unknown"}
+2025-06-01 23:04:33.257 [main] INFO  d.m.v.s.two.service.WeatherService - Getting 5-day forecast for city: non-existent-city
+2025-06-01 23:04:33.276 [main] INFO  d.m.v.s.two.service.WeatherService - Getting service statistics
+2025-06-01 23:04:33.281 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for city: non-existent-city
+2025-06-01 23:04:33.284 [main] INFO  d.m.v.s.two.service.WeatherService - Listing all cities
+2025-06-01 23:04:33.287 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for a random city
+2025-06-01 23:04:33.290 [main] INFO  d.m.v.s.two.service.WeatherService - Initializing weather service
+2025-06-01 23:04:33.292 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for city: London
+2025-06-01 23:04:33.294 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for a random city
+2025-06-01 23:04:33.294 [main] DEBUG d.m.v.s.two.service.WeatherService - Selected random city: London
+2025-06-01 23:04:33.297 [main] INFO  d.m.v.s.two.service.WeatherService - Getting 5-day forecast for city: London
+2025-06-01 23:05:31.771 [main] INFO  d.m.v.s.two.service.WeatherService - Getting 5-day forecast for city: non-existent-city
+2025-06-01 23:05:31.789 [main] INFO  d.m.v.s.two.service.WeatherService - Getting service statistics
+2025-06-01 23:05:31.794 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for city: non-existent-city
+2025-06-01 23:05:31.797 [main] INFO  d.m.v.s.two.service.WeatherService - Listing all cities
+2025-06-01 23:05:31.800 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for a random city
+2025-06-01 23:05:31.801 [main] INFO  d.m.v.s.two.service.WeatherService - Initializing weather service
+2025-06-01 23:05:31.803 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for city: London
+2025-06-01 23:05:31.805 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for a random city
+2025-06-01 23:05:31.805 [main] DEBUG d.m.v.s.two.service.WeatherService - Selected random city: Paris
+2025-06-01 23:05:31.817 [main] INFO  d.m.v.s.two.service.WeatherService - Getting 5-day forecast for city: London
+2025-06-01 23:08:52.857 [main] INFO  d.m.v.s.two.service.WeatherService - Getting 5-day forecast for city: non-existent-city
+2025-06-01 23:08:52.875 [main] INFO  d.m.v.s.two.service.WeatherService - Getting service statistics
+2025-06-01 23:08:52.881 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for city: non-existent-city
+2025-06-01 23:08:52.882 [main] INFO  d.m.v.s.two.service.WeatherService - Listing all cities
+2025-06-01 23:08:52.885 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for a random city
+2025-06-01 23:08:52.888 [main] INFO  d.m.v.s.two.service.WeatherService - Initializing weather service
+2025-06-01 23:08:52.890 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for city: London
+2025-06-01 23:08:52.892 [main] INFO  d.m.v.s.two.service.WeatherService - Getting weather for a random city
+2025-06-01 23:08:52.893 [main] DEBUG d.m.v.s.two.service.WeatherService - Selected random city: Paris
+2025-06-01 23:08:52.895 [main] INFO  d.m.v.s.two.service.WeatherService - Getting 5-day forecast for city: London

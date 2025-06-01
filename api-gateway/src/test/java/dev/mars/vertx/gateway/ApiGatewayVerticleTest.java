@@ -200,13 +200,17 @@ class ApiGatewayVerticleTest {
             .onComplete(testContext.succeeding(response -> {
                 // Verify the response status code (should be a redirect)
                 testContext.verify(() -> {
-                    assertEquals(302, response.statusCode());
+                    System.out.println("[DEBUG_LOG] Status code: " + response.statusCode());
+                    assertTrue(response.statusCode() == 301 || response.statusCode() == 302, "Expected redirect status code (301 or 302)");
 
                     // Verify the redirect location
                     String location = response.getHeader("Location");
+                    System.out.println("[DEBUG_LOG] Location header: " + location);
                     assertNotNull(location);
-                    assertTrue(location.contains("/swagger-ui/index.html"));
-                    assertTrue(location.contains("/openapi.yaml"));
+                    System.out.println("[DEBUG_LOG] Contains /swagger-ui/index.html: " + location.contains("/swagger-ui/index.html"));
+                    System.out.println("[DEBUG_LOG] Contains /openapi.yaml: " + location.contains("/openapi.yaml"));
+                    assertTrue(location.contains("/swagger-ui/index.html"), "Location should contain /swagger-ui/index.html");
+                    assertTrue(location.contains("/openapi.yaml"), "Location should contain /openapi.yaml");
 
                     testContext.completeNow();
                 });

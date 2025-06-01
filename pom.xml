@@ -28,6 +28,7 @@
         <module>common-eventbus</module>
         <module>common-metrics</module>
         <module>common-resilience</module>
+        <module>vertx-reference-bootstrap</module>
     </modules>
 
     <dependencyManagement>

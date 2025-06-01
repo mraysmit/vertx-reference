@@ -508,3 +508,21 @@
 2025-06-01 20:43:04.653 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"update","id":"test-id","name":"Updated Name","description":"Updated Description"}
 2025-06-01 20:43:04.653 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Updating item: {"action":"update","id":"test-id","name":"Updated Name","description":"Updated Description"}
 2025-06-01 20:43:04.656 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"unknown"}
+2025-06-01 21:28:43.538 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"id":"test-id"}
+2025-06-01 21:28:43.572 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Getting item with ID: test-id
+2025-06-01 21:28:43.593 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"someField":"someValue"}
+2025-06-01 21:28:43.596 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"create","name":"New Item","description":"New Description"}
+2025-06-01 21:28:43.596 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Creating new item: {"action":"create","name":"New Item","description":"New Description"}
+2025-06-01 21:28:43.600 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"delete","id":"test-id"}
+2025-06-01 21:28:43.600 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Deleting item: {"action":"delete","id":"test-id"}
+2025-06-01 21:28:43.604 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"delete"}
+2025-06-01 21:28:43.604 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Deleting item: {"action":"delete"}
+2025-06-01 21:28:43.607 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"list"}
+2025-06-01 21:28:43.608 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Listing all items
+2025-06-01 21:28:43.612 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"update","name":"Updated Name"}
+2025-06-01 21:28:43.612 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Updating item: {"action":"update","name":"Updated Name"}
+2025-06-01 21:28:43.614 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"id":"non-existent-id"}
+2025-06-01 21:28:43.614 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Getting item with ID: non-existent-id
+2025-06-01 21:28:43.616 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"update","id":"test-id","name":"Updated Name","description":"Updated Description"}
+2025-06-01 21:28:43.616 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Updating item: {"action":"update","id":"test-id","name":"Updated Name","description":"Updated Description"}
+2025-06-01 21:28:43.618 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"unknown"}

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Repository interface for Item operations.
  */
-public interface ItemRepository {
+public interface ItemRepositoryInterface {
     
     /**
      * Finds an item by ID.

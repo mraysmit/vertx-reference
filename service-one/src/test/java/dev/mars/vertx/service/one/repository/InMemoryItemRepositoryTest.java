@@ -10,16 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(VertxExtension.class)
 class InMemoryItemRepositoryTest {
 
     private Vertx vertx;
-    private ItemRepository repository;
+    private ItemRepositoryInterface repository;
 
     @BeforeEach
     void setUp(VertxTestContext testContext) {

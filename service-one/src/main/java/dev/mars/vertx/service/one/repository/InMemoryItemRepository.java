@@ -13,9 +13,9 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * In-memory implementation of the ItemRepository interface.
+ * In-memory implementation of the ItemRepositoryInterface interface.
  */
-public class InMemoryItemRepository implements ItemRepository {
+public class InMemoryItemRepository implements ItemRepositoryInterface {
     private static final Logger logger = LoggerFactory.getLogger(InMemoryItemRepository.class);
 
     private final Map<String, Item> items = new HashMap<>();
