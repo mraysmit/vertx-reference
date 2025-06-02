@@ -1,6 +1,6 @@
 service:
-  address: service.one
   name: Service One
+  address: service.one
 http:
   enabled: true
   port: 8081

@@ -41,19 +41,19 @@ public class ItemHandler implements ItemHandlerInterface {
 
                 switch (action) {
                     case "create":
-                        return createItem(request).map(item -> (Object) item);
+                        return createItem(request).map(item -> item);
                     case "update":
-                        return updateItem(request).map(item -> (Object) item);
+                        return updateItem(request).map(item -> item);
                     case "delete":
-                        return deleteItem(request).map(result -> (Object) result);
+                        return deleteItem(request).map(result -> result);
                     case "list":
-                        return listItems().map(result -> (Object) result);
+                        return listItems().map(result -> result);
                     default:
                         return Future.failedFuture("Unknown action: " + action);
                 }
             } else if (request.containsKey("id")) {
                 String id = request.getString("id");
-                return getItem(id).map(item -> (Object) item);
+                return getItem(id).map(item -> item);
             } else {
                 return Future.failedFuture("Invalid request: missing id or action");
             }

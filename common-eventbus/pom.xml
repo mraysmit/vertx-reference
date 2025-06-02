@@ -31,10 +31,18 @@
             <artifactId>vertx-core</artifactId>
         </dependency>
 
+        <!-- Vert.x Service Discovery -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-service-discovery</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
         <!-- Vert.x Config for configuration management -->
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-config</artifactId>
+            <version>${vertx.version}</version>
         </dependency>
 
         <!-- Vert.x Config YAML for YAML configuration support -->
@@ -48,12 +56,14 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-health-check</artifactId>
+            <version>${vertx.version}</version>
         </dependency>
 
         <!-- Vert.x Metrics with Micrometer -->
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-micrometer-metrics</artifactId>
+            <version>${vertx.version}</version>
         </dependency>
 
         <dependency>

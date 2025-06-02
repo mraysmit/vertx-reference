@@ -1,6 +1,7 @@
 package dev.mars.vertx.service.one;
 
 import dev.mars.vertx.common.eventbus.EventBusService;
+import dev.mars.vertx.common.eventbus.ServiceDiscoveryManager;
 import dev.mars.vertx.service.one.handler.ItemHandler;
 import dev.mars.vertx.service.one.repository.InMemoryItemRepository;
 import dev.mars.vertx.service.one.repository.ItemRepositoryInterface;
@@ -21,8 +22,11 @@ import org.slf4j.LoggerFactory;
 public class ServiceOneVerticle extends AbstractVerticle {
     private static final Logger logger = LoggerFactory.getLogger(ServiceOneVerticle.class);
 
+    private ServiceDiscoveryManager serviceDiscoveryManager;
     private EventBusService eventBusService;
     private MessageConsumer<JsonObject> consumer;
+    private String defaultServiceAddress = "service.one";
+    private String defaultServiceName = "Service One";
 
     // Components
     private ItemRepositoryInterface itemRepositoryInterface;
@@ -76,30 +80,51 @@ public class ServiceOneVerticle extends AbstractVerticle {
      * @return a Future that completes when registration is done
      */
     private Future<Void> registerEventBusConsumer() {
-        logger.info("Registering event bus consumer");
+        String serviceName = config().getString("service.name", defaultServiceName);
+        String serviceAddress = config().getString("service.address", defaultServiceAddress);
+        logger.info("Registering event bus consumer with service name: " + serviceAddress);
 
-        String serviceAddress = config().getString("service.address", "service.one");
-        consumer = eventBusService.consumer(serviceAddress, itemHandler::handleRequest);
-
-        return Future.succeededFuture();
+        // Register with service discovery
+        return serviceDiscoveryManager
+            .registerService(
+                serviceName,
+                serviceAddress,
+                new JsonObject()
+                    .put("type", "eventbus")
+                    .put("service", serviceName)
+            )
+            .compose(record -> {
+                consumer = eventBusService.consumer(serviceAddress, itemHandler::handleRequest);
+                return Future.succeededFuture();
+        });
     }
 
     @Override
     public void stop(Promise<Void> stopPromise) {
+        String serviceName = config().getString("service.name", defaultServiceName);
+        String serviceAddress = config().getString("service.address", defaultServiceAddress);
+        logger.info("Unregistering event bus consumer with service name: " + serviceAddress);
+
         logger.info("Stopping Service One Verticle");
 
-        // Unregister event bus consumer
-        if (consumer != null) {
-            eventBusService.unregisterConsumer(consumer)
-                .onSuccess(v -> {
-                    logger.info("Event bus consumer unregistered successfully");
-                    stopPromise.complete();
-                })
-                .onFailure(err -> {
-                    logger.error("Failed to unregister event bus consumer", err);
-                    stopPromise.fail(err);
-                });
-        } else {
+        if (serviceDiscoveryManager != null) {
+            serviceDiscoveryManager.unregisterService("service-one")
+                    .compose(v -> {
+                        if (consumer != null) {
+                            return eventBusService.unregisterConsumer(consumer);
+                        } else {
+                            return Future.succeededFuture();
+                        }
+                    })
+                    .onSuccess(v -> {
+                        logger.info("Service unregistered and consumer unregistered successfully");
+                        stopPromise.complete();
+                    })
+                    .onFailure(err -> {
+                        logger.error("Failed to unregister service or consumer", err);
+                        stopPromise.fail(err);
+                    });
+        } else if (consumer != null) {
             stopPromise.complete();
         }
     }
