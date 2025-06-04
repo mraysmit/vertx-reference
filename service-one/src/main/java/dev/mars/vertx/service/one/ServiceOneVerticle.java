@@ -52,7 +52,7 @@ public class ServiceOneVerticle extends AbstractVerticle {
 
     /**
      * Initializes the components (repository, service, handler).
-     * 
+     *
      * @return a Future that completes when initialization is done
      */
     private Future<Void> initializeComponents() {
@@ -70,13 +70,16 @@ public class ServiceOneVerticle extends AbstractVerticle {
         // Initialize event bus service
         eventBusService = new EventBusService(vertx);
 
+        // Initialize service discovery manager
+        serviceDiscoveryManager = new ServiceDiscoveryManager(vertx);
+
         // Initialize sample data
         return itemService.initialize();
     }
 
     /**
      * Registers the event bus consumer.
-     * 
+     *
      * @return a Future that completes when registration is done
      */
     private Future<Void> registerEventBusConsumer() {

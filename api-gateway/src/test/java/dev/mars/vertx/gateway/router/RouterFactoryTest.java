@@ -1,6 +1,7 @@
 package dev.mars.vertx.gateway.router;
 
 import dev.mars.vertx.gateway.handler.RequestHandler;
+import io.vertx.core.Handler;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpClient;
 import io.vertx.core.http.HttpMethod;
@@ -16,7 +17,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,11 +53,16 @@ class RouterFactoryTest {
 
         routerFactory = new RouterFactory(vertx, config);
 
-        // Create a router with the test handlers
-        routerFactory.createRouter(
-                healthCheckHandler,
-                serviceOneHandler,
-                serviceTwoHandler)
+        // Create a map of path patterns to handlers
+        Map<String, Handler<RoutingContext>> handlers = new HashMap<>();
+        handlers.put("/health", healthCheckHandler);
+        handlers.put("GET:/api/service-one/:id", serviceOneHandler);
+        handlers.put("POST:/api/service-one", serviceOneHandler);
+        handlers.put("GET:/api/service-two/:id", serviceTwoHandler);
+        handlers.put("POST:/api/service-two", serviceTwoHandler);
+
+        // Create a router with the handlers map
+        routerFactory.createRouter(handlers)
             .onSuccess(router -> {
                 // Start a test HTTP server
                 server = vertx.createHttpServer();
@@ -295,9 +302,9 @@ class RouterFactoryTest {
     }
 
     /**
-     * Test implementation of RequestHandler for health check.
+     * Test implementation of Handler for health check.
      */
-    private static class TestHealthCheckHandler implements RequestHandler {
+    private static class TestHealthCheckHandler implements Handler<RoutingContext> {
         private boolean called = false;
 
         @Override
@@ -318,9 +325,9 @@ class RouterFactoryTest {
     }
 
     /**
-     * Test implementation of RequestHandler for services.
+     * Test implementation of Handler for services.
      */
-    private static class TestServiceHandler implements RequestHandler {
+    private static class TestServiceHandler implements Handler<RoutingContext> {
         private boolean called = false;
         private String lastId = null;
         private final String serviceName;

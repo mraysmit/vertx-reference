@@ -1,0 +1,28 @@
+# Vertx Reference Bootstrap Configuration
+
+# API Gateway Configuration
+api-gateway:
+  host: localhost
+  port: 8080
+  services:
+    service-one:
+      address: service.one
+    service-two:
+      address: service.two
+
+# Service One Configuration
+service-one:
+  address: service.one
+  http:
+    port: 8081
+
+# Service Two Configuration
+service-two:
+  address: service.two
+  http:
+    port: 8082
+
+# Web Client Configuration
+web-client:
+  host: localhost
+  port: 8080

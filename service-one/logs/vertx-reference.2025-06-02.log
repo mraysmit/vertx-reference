@@ -1,0 +1,76 @@
+2025-06-02 11:15:49.064 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.068 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.072 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Deleting item with ID: non-existent-id
+2025-06-02 11:15:49.072 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Item not found for deletion with ID: non-existent-id
+2025-06-02 11:15:49.137 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.137 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.138 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Saving item: Item{id='non-existent-id', name='Non-existent Item', description='null', createdAt=0, updatedAt=null}
+2025-06-02 11:15:49.140 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Item not found for update with ID: non-existent-id
+2025-06-02 11:15:49.182 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.183 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.183 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Finding all items
+2025-06-02 11:15:49.183 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Found 5 items
+2025-06-02 11:15:49.218 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.218 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.218 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Getting item count
+2025-06-02 11:15:49.252 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.252 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.253 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Finding item by ID: item-2
+2025-06-02 11:15:49.253 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Found item: Item{id='item-2', name='Sample Item 2', description='This is a sample item 2', createdAt=1748834149252, updatedAt=null}
+2025-06-02 11:15:49.254 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Saving item: Item{id='item-2', name='Updated Item 2', description='This is an updated description', createdAt=1748834149252, updatedAt=null}
+2025-06-02 11:15:49.254 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Updated existing item with ID: item-2
+2025-06-02 11:15:49.254 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Finding item by ID: item-2
+2025-06-02 11:15:49.254 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Found item: Item{id='item-2', name='Updated Item 2', description='This is an updated description', createdAt=1748834149252, updatedAt=1748834149254}
+2025-06-02 11:15:49.287 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.287 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.288 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Finding item by ID: item-1
+2025-06-02 11:15:49.288 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Found item: Item{id='item-1', name='Sample Item 1', description='This is a sample item 1', createdAt=1748834149287, updatedAt=null}
+2025-06-02 11:15:49.318 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.318 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.319 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Finding item by ID: non-existent-id
+2025-06-02 11:15:49.319 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Item not found with ID: non-existent-id
+2025-06-02 11:15:49.354 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.354 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.355 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Getting item count
+2025-06-02 11:15:49.384 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.385 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.385 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Deleting item with ID: item-3
+2025-06-02 11:15:49.385 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Successfully deleted item with ID: item-3
+2025-06-02 11:15:49.385 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Finding item by ID: item-3
+2025-06-02 11:15:49.386 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Item not found with ID: item-3
+2025-06-02 11:15:49.386 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Getting item count
+2025-06-02 11:15:49.416 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-02 11:15:49.416 [main] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-02 11:15:49.417 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Saving item: Item{id='null', name='New Test Item', description='This is a new test item', createdAt=0, updatedAt=null}
+2025-06-02 11:15:49.417 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Created new item with ID: e98b0ca4-0f01-468b-8e79-8c94528a0402
+2025-06-02 11:15:49.418 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Finding item by ID: e98b0ca4-0f01-468b-8e79-8c94528a0402
+2025-06-02 11:15:49.418 [main] DEBUG d.m.v.s.o.r.InMemoryItemRepository - Found item: Item{id='e98b0ca4-0f01-468b-8e79-8c94528a0402', name='New Test Item', description='This is a new test item', createdAt=1748834149417, updatedAt=null}
+2025-06-02 11:15:49.436 [main] INFO  d.m.v.s.one.service.ItemService - Updating item with ID: test-id
+2025-06-02 11:15:49.437 [main] INFO  d.m.v.s.one.service.ItemService - Deleting item with ID: non-existent-id
+2025-06-02 11:15:49.438 [main] INFO  d.m.v.s.one.service.ItemService - Getting item with ID: non-existent-id
+2025-06-02 11:15:49.440 [main] INFO  d.m.v.s.one.service.ItemService - Listing all items
+2025-06-02 11:15:49.442 [main] INFO  d.m.v.s.one.service.ItemService - Updating item with ID: non-existent-id
+2025-06-02 11:15:49.443 [main] INFO  d.m.v.s.one.service.ItemService - Getting item with ID: test-id
+2025-06-02 11:15:49.444 [main] INFO  d.m.v.s.one.service.ItemService - Updating item with ID: test-id
+2025-06-02 11:15:49.445 [main] INFO  d.m.v.s.one.service.ItemService - Initializing item service
+2025-06-02 11:15:49.446 [main] INFO  d.m.v.s.one.service.ItemService - Creating new item: {"name":"New Item","description":"New Description"}
+2025-06-02 11:15:49.475 [main] INFO  d.m.v.s.one.service.ItemService - Deleting item with ID: test-id
+2025-06-02 11:15:49.477 [main] INFO  d.m.v.s.one.service.ItemService - Creating new item: {}
+2025-06-02 11:15:49.481 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"id":"test-id"}
+2025-06-02 11:15:49.481 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Getting item with ID: test-id
+2025-06-02 11:15:49.483 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"someField":"someValue"}
+2025-06-02 11:15:49.484 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"create","name":"New Item","description":"New Description"}
+2025-06-02 11:15:49.484 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Creating new item: {"action":"create","name":"New Item","description":"New Description"}
+2025-06-02 11:15:49.486 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"delete","id":"test-id"}
+2025-06-02 11:15:49.486 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Deleting item: {"action":"delete","id":"test-id"}
+2025-06-02 11:15:49.488 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"delete"}
+2025-06-02 11:15:49.488 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Deleting item: {"action":"delete"}
+2025-06-02 11:15:49.490 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"list"}
+2025-06-02 11:15:49.490 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Listing all items
+2025-06-02 11:15:49.491 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"update","name":"Updated Name"}
+2025-06-02 11:15:49.491 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Updating item: {"action":"update","name":"Updated Name"}
+2025-06-02 11:15:49.493 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"id":"non-existent-id"}
+2025-06-02 11:15:49.493 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Getting item with ID: non-existent-id
+2025-06-02 11:15:49.494 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"update","id":"test-id","name":"Updated Name","description":"Updated Description"}
+2025-06-02 11:15:49.494 [main] DEBUG d.m.v.s.one.handler.ItemHandler - Updating item: {"action":"update","id":"test-id","name":"Updated Name","description":"Updated Description"}
+2025-06-02 11:15:49.496 [main] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"unknown"}

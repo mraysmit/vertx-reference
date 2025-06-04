@@ -1,176 +1,66 @@
-2025-06-01 13:55:21.801 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:55:21.804 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 13:55:21.810 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 13:55:21.832 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 13:55:21.833 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 13:55:21.835 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 13:55:21.838 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 13:55:21.912 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:55:21.913 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 13:55:21.954 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:55:21.956 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 13:55:21.957 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 13:55:21.957 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 13:55:21.957 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 13:55:21.958 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 13:55:21.958 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 13:55:21.993 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:55:22.028 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:55:22.028 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 13:55:22.029 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 13:55:22.065 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:55:22.073 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
-2025-06-01 13:56:18.851 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:56:18.855 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 13:56:18.861 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 13:56:18.887 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 13:56:18.889 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 13:56:18.889 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 13:56:18.892 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 13:56:18.972 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:56:18.974 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 13:56:19.020 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:56:19.020 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 13:56:19.021 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 13:56:19.021 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 13:56:19.022 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 13:56:19.023 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 13:56:19.023 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 13:56:19.061 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:56:19.095 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:56:19.096 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 13:56:19.096 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 13:56:19.134 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 13:56:19.143 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
-2025-06-01 14:59:13.263 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 14:59:13.267 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 14:59:13.274 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 14:59:13.302 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 14:59:13.303 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 14:59:13.303 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 14:59:13.306 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 14:59:13.373 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 14:59:13.374 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 14:59:13.425 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 14:59:13.426 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 14:59:13.426 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 14:59:13.427 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 14:59:13.427 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 14:59:13.428 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 14:59:13.428 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 14:59:13.465 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 14:59:13.503 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 14:59:13.503 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 14:59:13.504 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 14:59:13.543 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 14:59:13.552 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
-2025-06-01 15:34:38.026 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:34:38.029 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:34:38.035 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:34:38.057 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:34:38.057 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 15:34:38.058 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 15:34:38.061 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:34:38.133 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:34:38.134 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 15:34:38.173 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:34:38.173 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:34:38.174 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:34:38.174 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:34:38.175 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 15:34:38.175 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 15:34:38.175 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:34:38.209 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:34:38.241 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:34:38.242 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 15:34:38.243 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 15:34:38.282 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:34:38.290 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
-2025-06-01 15:35:31.647 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:35:31.651 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:35:31.661 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:35:31.692 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:35:31.692 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 15:35:31.694 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 15:35:31.696 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:35:31.770 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:35:31.772 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 15:35:31.824 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:35:31.825 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:35:31.826 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:35:31.826 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:35:31.827 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 15:35:31.828 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 15:35:31.828 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:35:31.869 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:35:31.911 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:35:31.911 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 15:35:31.912 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 15:35:31.952 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:35:31.961 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
-2025-06-01 15:36:59.115 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:36:59.118 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:36:59.122 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:36:59.142 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:36:59.144 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 15:36:59.145 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 15:36:59.148 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:36:59.209 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:36:59.210 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 15:36:59.246 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:36:59.247 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:36:59.247 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:36:59.247 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:36:59.248 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 15:36:59.249 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 15:36:59.249 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:36:59.281 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:36:59.312 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:36:59.313 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 15:36:59.313 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 15:36:59.350 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:36:59.357 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
-2025-06-01 15:49:23.944 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:49:23.947 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:49:23.952 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:49:23.972 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:49:23.973 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 15:49:23.974 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 15:49:23.976 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:49:24.031 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:49:24.032 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 15:49:24.071 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:49:24.072 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 15:49:24.072 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 15:49:24.073 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 15:49:24.073 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 15:49:24.074 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 15:49:24.074 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 15:49:24.106 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:49:24.138 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:49:24.139 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 15:49:24.140 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 15:49:24.176 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 15:49:24.184 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
-2025-06-01 19:02:15.021 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 19:02:15.024 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 19:02:15.029 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 19:02:15.050 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 19:02:15.051 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
-2025-06-01 19:02:15.052 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
-2025-06-01 19:02:15.054 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 19:02:15.113 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 19:02:15.114 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
-2025-06-01 19:02:15.150 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 19:02:15.151 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
-2025-06-01 19:02:15.151 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
-2025-06-01 19:02:15.152 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
-2025-06-01 19:02:15.152 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
-2025-06-01 19:02:15.153 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
-2025-06-01 19:02:15.153 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
-2025-06-01 19:02:15.184 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 19:02:15.221 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 19:02:15.222 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
-2025-06-01 19:02:15.222 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
-2025-06-01 19:02:15.255 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
-2025-06-01 19:02:15.262 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
+2025-06-04 00:08:29.840 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:08:29.847 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-04 00:08:29.853 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-04 00:08:29.874 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-04 00:08:29.875 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-04 00:08:29.875 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-04 00:08:29.878 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-04 00:08:29.933 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:08:29.934 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-04 00:08:29.969 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:08:29.969 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-04 00:08:29.970 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-04 00:08:29.970 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-04 00:08:29.971 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-04 00:08:29.971 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-04 00:08:29.971 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-04 00:08:30.004 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:08:30.036 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:08:30.037 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-04 00:08:30.037 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-04 00:08:30.069 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:08:30.076 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
+2025-06-04 00:25:41.544 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:25:41.546 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-04 00:25:41.551 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-04 00:25:41.571 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-04 00:25:41.572 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-04 00:25:41.573 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-04 00:25:41.575 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-04 00:25:41.630 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:25:41.631 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-04 00:25:41.666 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:25:41.667 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-04 00:25:41.668 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-04 00:25:41.668 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-04 00:25:41.668 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-04 00:25:41.669 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-04 00:25:41.669 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-04 00:25:41.700 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:25:41.737 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:25:41.738 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-04 00:25:41.738 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-04 00:25:41.769 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 00:25:41.776 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}
+2025-06-04 10:00:06.592 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 10:00:06.595 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-04 10:00:06.600 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-04 10:00:06.620 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-04 10:00:06.621 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Sending reply to test.address: {"test":"value","received":true}
+2025-06-04 10:00:06.622 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received reply from test.address: {"test":"value","received":true}
+2025-06-04 10:00:06.624 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-04 10:00:06.680 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 10:00:06.681 [main] DEBUG d.m.v.c.eventbus.EventBusService - Publishing message to test.address: {"test":"value"}
+2025-06-04 10:00:06.717 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 10:00:06.718 [main] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: test.address
+2025-06-04 10:00:06.718 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address: {"test":"value"}
+2025-06-04 10:00:06.718 [vert.x-eventloop-thread-0] DEBUG d.m.v.c.eventbus.EventBusService - Received message on test.address: {"test":"value"}
+2025-06-04 10:00:06.719 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error processing message on test.address: Deliberate failure for testing
+2025-06-04 10:00:06.719 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address: Deliberate failure for testing
+2025-06-04 10:00:06.720 [vert.x-eventloop-thread-0] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: test.address
+2025-06-04 10:00:06.751 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 10:00:06.782 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 10:00:06.783 [main] DEBUG d.m.v.c.eventbus.EventBusService - Sending message to test.address.nonexistent: {"test":"value"}
+2025-06-04 10:00:06.783 [vert.x-eventloop-thread-0] ERROR d.m.v.c.eventbus.EventBusService - Error sending message to test.address.nonexistent: No handlers for address test.address.nonexistent
+2025-06-04 10:00:06.820 [main] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-04 10:00:06.827 [main] DEBUG d.m.v.c.eventbus.EventBusService - Added headers to delivery options: {"header1":"value1","header2":"value2"}

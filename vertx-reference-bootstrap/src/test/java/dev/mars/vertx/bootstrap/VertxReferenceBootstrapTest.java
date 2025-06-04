@@ -39,27 +39,28 @@ class VertxReferenceBootstrapTest {
         // Create a new bootstrap instance
         bootstrap = new VertxReferenceBootstrap();
 
-        // Start the bootstrap process
-        try {
-            bootstrap.start();
+        // Start the bootstrap process asynchronously
+        bootstrap.start()
+            .onComplete(testContext.succeeding(v -> {
+                // Create a WebClient for making API calls
+                WebClientOptions clientOptions = new WebClientOptions()
+                        .setDefaultHost(API_GATEWAY_HOST)
+                        .setDefaultPort(API_GATEWAY_PORT);
+                webClient = WebClient.create(bootstrap.getVertx(), clientOptions);
 
-            // Create a WebClient for making API calls
-            WebClientOptions clientOptions = new WebClientOptions()
-                    .setDefaultHost(API_GATEWAY_HOST)
-                    .setDefaultPort(API_GATEWAY_PORT);
-            webClient = WebClient.create(bootstrap.getVertx(), clientOptions);
-
-            testContext.completeNow();
-        } catch (Exception e) {
-            testContext.failNow(e);
-        }
+                testContext.completeNow();
+            }));
     }
 
     @AfterEach
     void tearDown(VertxTestContext testContext) {
-        // Shutdown the bootstrap
-        bootstrap.shutdown();
-        testContext.completeNow();
+        // Shutdown the bootstrap asynchronously
+        if (bootstrap != null) {
+            bootstrap.shutdown()
+                .onComplete(testContext.succeeding(v -> testContext.completeNow()));
+        } else {
+            testContext.completeNow();
+        }
     }
 
     @Test

@@ -25,7 +25,7 @@ public class EventBusService {
     
     /**
      * Creates a new EventBusService.
-     * 
+     *
      * @param vertx the Vertx instance
      */
     public EventBusService(Vertx vertx) {
@@ -35,7 +35,7 @@ public class EventBusService {
     
     /**
      * Sends a message to the event bus and expects a reply.
-     * 
+     *
      * @param <T> the type of the reply
      * @param address the address to send the message to
      * @param message the message to send
@@ -48,7 +48,7 @@ public class EventBusService {
     
     /**
      * Sends a message to the event bus and expects a reply with a custom timeout.
-     * 
+     *
      * @param <T> the type of the reply
      * @param address the address to send the message to
      * @param message the message to send
@@ -79,7 +79,7 @@ public class EventBusService {
     
     /**
      * Publishes a message to the event bus without expecting a reply.
-     * 
+     *
      * @param address the address to publish the message to
      * @param message the message to publish
      */
@@ -90,7 +90,7 @@ public class EventBusService {
     
     /**
      * Registers a consumer for messages on the event bus.
-     * 
+     *
      * @param <T> the type of the message
      * @param address the address to listen on
      * @param handler the function to handle messages
@@ -116,7 +116,7 @@ public class EventBusService {
     
     /**
      * Unregisters a consumer from the event bus.
-     * 
+     *
      * @param consumer the consumer to unregister
      * @return a Future that completes when the consumer is unregistered
      */
@@ -127,7 +127,7 @@ public class EventBusService {
     
     /**
      * Sets delivery options for a message.
-     * 
+     *
      * @param timeoutMs the timeout in milliseconds
      * @param headers optional headers to include
      * @return the delivery options

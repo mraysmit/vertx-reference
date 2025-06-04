@@ -258,6 +258,139 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /api/service-two/random:
+    get:
+      summary: Get weather for a random city
+      description: Returns weather data for a randomly selected city
+      operationId: getServiceTwoRandomWeather
+      tags:
+        - Service Two
+      responses:
+        '200':
+          description: Weather data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTwoItem'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/service-two/forecast/{city}:
+    get:
+      summary: Get weather forecast for a city
+      description: Returns a multi-day weather forecast for the specified city
+      operationId: getServiceTwoForecast
+      tags:
+        - Service Two
+      parameters:
+        - name: city
+          in: path
+          required: true
+          description: Name of the city
+          schema:
+            type: string
+        - name: days
+          in: query
+          required: false
+          description: Number of days for the forecast (default is 5)
+          schema:
+            type: integer
+            default: 5
+      responses:
+        '200':
+          description: Forecast retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  city:
+                    type: string
+                    description: City name
+                  days:
+                    type: integer
+                    description: Number of days in the forecast
+                  forecast:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceTwoItem'
+        '404':
+          description: City not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/service-two/cities:
+    get:
+      summary: List all available cities
+      description: Returns a list of all cities for which weather data is available
+      operationId: getServiceTwoCities
+      tags:
+        - Service Two
+      responses:
+        '200':
+          description: Cities retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cities:
+                    type: array
+                    items:
+                      type: string
+                  count:
+                    type: integer
+                    description: Number of cities
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/service-two/stats:
+    get:
+      summary: Get service statistics
+      description: Returns statistics about the weather service
+      operationId: getServiceTwoStats
+      tags:
+        - Service Two
+      responses:
+        '200':
+          description: Statistics retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestsProcessed:
+                    type: integer
+                    description: Number of requests processed
+                  citiesAvailable:
+                    type: integer
+                    description: Number of cities available
+                  uptime:
+                    type: integer
+                    format: int64
+                    description: Service uptime in milliseconds
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     HealthResponse:

@@ -21,8 +21,14 @@
 
         <dependency>
             <groupId>dev.mars</groupId>
+            <artifactId>common-config</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.mars</groupId>
             <artifactId>common-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <!-- Vert.x Core -->
         <dependency>

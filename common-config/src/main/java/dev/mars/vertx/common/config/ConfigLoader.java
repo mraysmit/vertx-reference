@@ -19,7 +19,7 @@ public class ConfigLoader {
 
     /**
      * Loads configuration from environment variables, system properties, and a config file.
-     * 
+     *
      * @param vertx the Vertx instance
      * @param configPath path to the configuration file (optional)
      * @return a Future with the loaded configuration
@@ -94,7 +94,7 @@ public class ConfigLoader {
     
     /**
      * Loads configuration from a specific file with a custom scan period.
-     * 
+     *
      * @param vertx the Vertx instance
      * @param configPath path to the configuration file
      * @param scanPeriodMs how often to check for changes (in milliseconds)

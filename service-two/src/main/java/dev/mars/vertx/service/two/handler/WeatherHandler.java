@@ -36,11 +36,8 @@ public class WeatherHandler implements WeatherHandlerInterface {
         logger.info("Handling request: {}", request);
 
         try {
-            // Check if the request has a city
-            if (request.containsKey("city")) {
-                String city = request.getString("city");
-                return getWeatherForCity(city).map(weather -> (Object) weather);
-            } else if (request.containsKey("action")) {
+            // Check if the request has an action
+            if (request.containsKey("action")) {
                 String action = request.getString("action");
 
                 switch (action) {
@@ -53,6 +50,11 @@ public class WeatherHandler implements WeatherHandlerInterface {
                     default:
                         return Future.failedFuture("Unknown action: " + action);
                 }
+            } 
+            // If no action but has city, return weather for that city
+            else if (request.containsKey("city")) {
+                String city = request.getString("city");
+                return getWeatherForCity(city).map(weather -> (Object) weather);
             } else {
                 // Default to returning weather for a random city
                 return getRandomWeather().map(weather -> (Object) weather);

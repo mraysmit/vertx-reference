@@ -45,16 +45,25 @@ public class MicroserviceClientFactory {
      * @return the client
      */
     public MicroserviceClient getClient(String serviceName) {
-        return clients.computeIfAbsent(serviceName, this::createClient);
+        // Check if client already exists
+        MicroserviceClient existingClient = clients.get(serviceName);
+        if (existingClient != null) {
+            return existingClient;
+        }
+
+        // Create new client
+        MicroserviceClient client = createClientSync(serviceName);
+        clients.put(serviceName, client);
+        return client;
     }
 
     /**
-     * Creates a new client for the specified service.
+     * Creates a new client for the specified service synchronously.
      *
      * @param serviceName the name of the service
      * @return the new client
      */
-    private MicroserviceClient createClient(String serviceName) {
+    private MicroserviceClient createClientSync(String serviceName) {
         logger.info("Creating client for service: {}", serviceName);
 
         // Create circuit breaker
@@ -62,25 +71,13 @@ public class MicroserviceClientFactory {
                 config.getJsonObject("services", new JsonObject())
                         .getJsonObject(serviceName, new JsonObject()));
 
-        // Discover service address
-        return serviceDiscoveryManager.discoverService(serviceName)
-            .map(serviceAddress -> {
-                logger.info("Creating client with discovered address: {}", serviceAddress);
-                return new MicroserviceClient(vertx, circuitBreaker, serviceAddress);
-            })
-            .onFailure(err -> {
-                logger.warn("Service discovery failed for {}, falling back to configuration", serviceName);
-            })
-            .recover(err -> {
-                // Fallback to configuration if discovery fails
-                String serviceAddress = config.getJsonObject("services", new JsonObject())
-                        .getJsonObject(serviceName, new JsonObject())
-                        .getString("address", "service." + serviceName);
+        // Fallback to configuration directly without trying service discovery
+        String serviceAddress = config.getJsonObject("services", new JsonObject())
+                .getJsonObject(serviceName, new JsonObject())
+                .getString("address", "service." + serviceName);
 
-                logger.info("Creating client with fallback address: {}", serviceAddress);
-                return Future.succeededFuture(new MicroserviceClient(vertx, circuitBreaker, serviceAddress));
-            })
-            .result();
+        logger.info("Creating client with address: {}", serviceAddress);
+        return new MicroserviceClient(vertx, circuitBreaker, serviceAddress);
     }
 
     /**

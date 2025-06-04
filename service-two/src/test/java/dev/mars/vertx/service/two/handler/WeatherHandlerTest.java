@@ -143,22 +143,29 @@ class WeatherHandlerTest {
                         // Print the result for debugging
                         System.out.println("[DEBUG_LOG] Forecast result: " + jsonResult.encode());
 
-                        // The test is failing because we're getting a weather object instead of a forecast object
-                        // Let's modify our expectations to match what we're actually getting
+                        // Verify the forecast properties
                         assertTrue(jsonResult.containsKey("city"), "Result should contain 'city' field");
-
-                        // Since we're getting a weather object, we should check for weather fields
-                        assertTrue(jsonResult.containsKey("temperature"), "Result should contain 'temperature' field");
-                        assertTrue(jsonResult.containsKey("humidity"), "Result should contain 'humidity' field");
-                        assertTrue(jsonResult.containsKey("windSpeed"), "Result should contain 'windSpeed' field");
-                        assertTrue(jsonResult.containsKey("condition"), "Result should contain 'condition' field");
+                        assertTrue(jsonResult.containsKey("days"), "Result should contain 'days' field");
+                        assertTrue(jsonResult.containsKey("forecast"), "Result should contain 'forecast' field");
 
                         // Verify the values
                         assertEquals("London", jsonResult.getString("city"));
-                        assertEquals(20.5, jsonResult.getDouble("temperature"));
-                        assertEquals(65.0, jsonResult.getDouble("humidity"));
-                        assertEquals(10.2, jsonResult.getDouble("windSpeed"));
-                        assertEquals("Sunny", jsonResult.getString("condition"));
+                        assertEquals(5, jsonResult.getInteger("days"));
+
+                        // Verify the forecast array
+                        JsonArray forecast = jsonResult.getJsonArray("forecast");
+                        assertNotNull(forecast, "Forecast array should not be null");
+                        assertEquals(2, forecast.size(), "Forecast array should have 2 items");
+
+                        // Verify the first forecast item
+                        JsonObject day1 = forecast.getJsonObject(0);
+                        assertEquals(1, day1.getInteger("day"));
+                        assertEquals(20.0, day1.getDouble("temperature"));
+
+                        // Verify the second forecast item
+                        JsonObject day2 = forecast.getJsonObject(1);
+                        assertEquals(2, day2.getInteger("day"));
+                        assertEquals(21.0, day2.getDouble("temperature"));
 
                         testContext.completeNow();
                     });

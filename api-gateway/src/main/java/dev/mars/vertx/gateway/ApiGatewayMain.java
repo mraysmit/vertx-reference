@@ -4,12 +4,7 @@ package dev.mars.vertx.gateway;
 // import dev.mars.vertx.common.metrics.MetricsManager;
 // import dev.mars.vertx.common.util.ShutdownManager;
 // import dev.mars.vertx.common.util.ThreadPoolConfig;
-// import dev.mars.vertx.common.metrics.MetricsManager;
-// import dev.mars.vertx.common.util.ShutdownManager;
-// import dev.mars.vertx.common.util.ThreadPoolConfig;
-// import dev.mars.vertx.common.metrics.MetricsManager;
-// import dev.mars.vertx.common.util.ShutdownManager;
-// import dev.mars.vertx.common.util.ThreadPoolConfig;
+import dev.mars.vertx.common.config.ConfigLoader;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
@@ -41,21 +36,60 @@ public class ApiGatewayMain {
         // ShutdownManager shutdownManager = new ShutdownManager(vertx);
         // shutdownManager.registerShutdownHook();
 
-        // Deploy the API Gateway verticle
-        DeploymentOptions deploymentOptions = new DeploymentOptions()
-                .setConfig(new JsonObject()
-                        .put("http.port", 8080)
-                        .put("service.one.address", "service.one")
-                        .put("service.two.address", "service.two")
-                );
+        // Initialize the application
+        initializeApplication(vertx);
+    }
 
-        vertx.deployVerticle(ApiGatewayVerticle.class.getName(), deploymentOptions, ar -> {
-            if (ar.succeeded()) {
-                logger.info("API Gateway verticle deployed successfully: {}", ar.result());
-            } else {
-                logger.error("Failed to deploy API Gateway verticle", ar.cause());
+    /**
+     * Initializes the application by loading configuration and deploying the API Gateway verticle.
+     * Extracted to a separate method for better testability.
+     *
+     * @param vertx the Vertx instance
+     */
+    private static void initializeApplication(Vertx vertx) {
+        // Load configuration from config.yaml
+        ConfigLoader.load(vertx, "api-gateway/src/main/resources/config.yaml")
+            .onSuccess(config -> {
+                logger.info("Configuration loaded successfully");
+
+                // Deploy the API Gateway verticle with the loaded configuration
+                DeploymentOptions deploymentOptions = new DeploymentOptions()
+                        .setConfig(config);
+
+                vertx.deployVerticle(ApiGatewayVerticle.class.getName(), deploymentOptions, ar -> {
+                    if (ar.succeeded()) {
+                        logger.info("API Gateway verticle deployed successfully: {}", ar.result());
+                    } else {
+                        logger.error("Failed to deploy API Gateway verticle", ar.cause());
+                        vertx.close();
+                    }
+                });
+            })
+            .onFailure(err -> {
+                logger.error("Failed to load configuration", err);
                 vertx.close();
-            }
-        });
+            });
+    }
+
+    /**
+     * Initializes the application for testing purposes.
+     * This method is used by tests to verify the initialization logic without starting a new Vertx instance.
+     *
+     * @param vertx the Vertx instance to use
+     */
+    static void initializeForTesting(Vertx vertx) {
+        logger.info("Initializing API Gateway for testing");
+
+        // Load configuration from a test-specific path
+        ConfigLoader.load(vertx, "api-gateway/src/test/resources/test-config.yaml")
+            .onSuccess(config -> {
+                logger.info("Test configuration loaded successfully");
+
+                // In test mode, we don't actually deploy the verticle
+                logger.info("Test initialization completed successfully");
+            })
+            .onFailure(err -> {
+                logger.error("Failed to load test configuration", err);
+            });
     }
 }

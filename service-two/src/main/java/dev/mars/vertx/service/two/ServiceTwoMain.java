@@ -1,8 +1,6 @@
 package dev.mars.vertx.service.two;
 
-import dev.mars.vertx.common.metrics.MetricsManager;
-import dev.mars.vertx.common.util.ShutdownManager;
-import dev.mars.vertx.common.util.ThreadPoolConfig;
+import dev.mars.vertx.common.config.ConfigLoader;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
@@ -16,36 +14,35 @@ import org.slf4j.LoggerFactory;
  */
 public class ServiceTwoMain {
     private static final Logger logger = LoggerFactory.getLogger(ServiceTwoMain.class);
-    
+
     public static void main(String[] args) {
         logger.info("Starting Service Two");
-        
-        // Configure Vert.x options with metrics and thread pools
+
+        // Create Vert.x instance with default options
         VertxOptions options = new VertxOptions();
-        ThreadPoolConfig.configureDefaults(options);
-        MetricsManager.configureMetrics(options, true);
-        
-        // Create Vert.x instance
         Vertx vertx = Vertx.vertx(options);
-        
-        // Set up graceful shutdown
-        ShutdownManager shutdownManager = new ShutdownManager(vertx);
-        shutdownManager.registerShutdownHook();
-        
-        // Deploy the Service Two verticle
-        DeploymentOptions deploymentOptions = new DeploymentOptions()
-                .setConfig(new JsonObject()
-                        .put("service.address", "service.two")
-                        .put("http.port", 8082) // In case we want to expose an HTTP endpoint
-                );
-        
-        vertx.deployVerticle(ServiceTwoVerticle.class.getName(), deploymentOptions, ar -> {
-            if (ar.succeeded()) {
-                logger.info("Service Two verticle deployed successfully: {}", ar.result());
-            } else {
-                logger.error("Failed to deploy Service Two verticle", ar.cause());
+
+        // Load configuration from config.yaml
+        ConfigLoader.load(vertx, "service-two/src/main/resources/config.yaml")
+            .onSuccess(config -> {
+                logger.info("Configuration loaded successfully");
+
+                // Deploy the Service Two verticle with the loaded configuration
+                DeploymentOptions deploymentOptions = new DeploymentOptions()
+                        .setConfig(config);
+
+                vertx.deployVerticle(ServiceTwoVerticle.class.getName(), deploymentOptions, ar -> {
+                    if (ar.succeeded()) {
+                        logger.info("Service Two verticle deployed successfully: {}", ar.result());
+                    } else {
+                        logger.error("Failed to deploy Service Two verticle", ar.cause());
+                        vertx.close();
+                    }
+                });
+            })
+            .onFailure(err -> {
+                logger.error("Failed to load configuration", err);
                 vertx.close();
-            }
-        });
+            });
     }
 }

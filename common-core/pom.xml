@@ -13,6 +13,13 @@
     <artifactId>common-core</artifactId>
 
     <dependencies>
+        <!-- Common modules -->
+        <dependency>
+            <groupId>dev.mars</groupId>
+            <artifactId>common-config</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Vert.x Core -->
         <dependency>
             <groupId>io.vertx</groupId>

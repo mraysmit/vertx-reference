@@ -1,0 +1,23 @@
+# Common Core Configuration
+
+# Thread Pool Configuration
+thread-pools:
+  # Event loop pool configuration
+  event-loop:
+    # Default size is 2 * number of available processors
+    # This can be overridden by setting a specific value
+    size: 0  # 0 means use the calculated default
+
+  # Worker pool configuration
+  worker:
+    size: 20
+    max-execute-time: 60000  # in milliseconds
+
+  # Internal blocking pool configuration
+  internal-blocking:
+    size: 20
+
+# Shutdown Configuration
+shutdown:
+  # Maximum time to wait for shutdown in seconds
+  timeout: 30

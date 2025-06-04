@@ -16,7 +16,7 @@ public class ExceptionHandler {
     
     /**
      * Wraps a function that might throw an exception in a try-catch block and returns a Future.
-     * 
+     *
      * @param <T> the input type
      * @param <R> the result type
      * @param function the function to execute
@@ -38,7 +38,7 @@ public class ExceptionHandler {
     
     /**
      * Wraps a runnable that might throw an exception in a try-catch block and returns a Future.
-     * 
+     *
      * @param runnable the runnable to execute
      * @param errorMessage the error message to log if an exception occurs
      * @return a Future with void result or failure
@@ -57,7 +57,7 @@ public class ExceptionHandler {
     
     /**
      * Handles an exception by logging it and returning a failed Future.
-     * 
+     *
      * @param <T> the result type
      * @param e the exception to handle
      * @param errorMessage the error message to log
@@ -71,7 +71,7 @@ public class ExceptionHandler {
     /**
      * Logs an exception but doesn't propagate it.
      * Useful for fire-and-forget operations where you don't want to fail the caller.
-     * 
+     *
      * @param e the exception to handle
      * @param errorMessage the error message to log
      */

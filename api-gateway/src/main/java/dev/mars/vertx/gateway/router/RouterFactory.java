@@ -1,9 +1,7 @@
 package dev.mars.vertx.gateway.router;
 
-import dev.mars.vertx.gateway.handler.HealthCheckHandler;
-import dev.mars.vertx.gateway.handler.RequestHandler;
-import dev.mars.vertx.gateway.handler.ServiceOneHandler;
-import dev.mars.vertx.gateway.handler.ServiceTwoHandler;
+import dev.mars.vertx.gateway.handler.ServiceHandler;
+import io.vertx.core.Handler;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpMethod;
@@ -14,19 +12,15 @@ import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CorsHandler;
 import io.vertx.ext.web.handler.LoggerHandler;
 import io.vertx.ext.web.handler.ResponseTimeHandler;
-import io.vertx.ext.web.handler.StaticHandler;
-import io.vertx.ext.web.openapi.RouterBuilder;
-import io.vertx.ext.web.openapi.RouterBuilderOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * Factory for creating and configuring routers.
+ * Simplified factory for creating and configuring routers.
  */
 public class RouterFactory {
     private static final Logger logger = LoggerFactory.getLogger(RouterFactory.class);
@@ -49,221 +43,64 @@ public class RouterFactory {
     /**
      * Creates a new router with the specified handlers.
      *
-     * @param healthCheckHandler the health check handler
-     * @param serviceOneHandler the service one handler
-     * @param serviceTwoHandler the service two handler
+     * @param handlers the map of path patterns to handlers
      * @return the router
      */
-    public Future<Router> createRouter(
-            RequestHandler healthCheckHandler,
-            RequestHandler serviceOneHandler,
-            RequestHandler serviceTwoHandler) {
-
-        logger.info("Creating router using OpenAPI specification");
-
-        // Create a map of operation IDs to handlers
-        Map<String, RequestHandler> handlers = new HashMap<>();
-        handlers.put("getHealth", healthCheckHandler);
-
-        // Service One handlers
-        handlers.put("getServiceOneItem", serviceOneHandler);
-        handlers.put("createServiceOneItem", serviceOneHandler);
-        handlers.put("updateServiceOneItem", serviceOneHandler);
-        handlers.put("deleteServiceOneItem", serviceOneHandler);
-        handlers.put("listServiceOneItems", serviceOneHandler);
-
-        // Service Two handlers
-        handlers.put("getServiceTwoItem", serviceTwoHandler);
-        handlers.put("createServiceTwoItem", serviceTwoHandler);
-
-        // Create the router from the OpenAPI specification
-        return createRouterFromOpenAPI(handlers);
-    }
-
-    /**
-     * Creates a router from the OpenAPI specification.
-     *
-     * @param handlers the map of operation IDs to handlers
-     * @return a future with the router
-     */
-    private Future<Router> createRouterFromOpenAPI(Map<String, RequestHandler> handlers) {
-        // For integration tests, we'll use the fallback mechanism to ensure consistent behavior
-        logger.info("Creating router without OpenAPI specification");
+    public Future<Router> createRouter(Map<String, io.vertx.core.Handler<io.vertx.ext.web.RoutingContext>> handlers) {
+        logger.info("Creating router with {} handlers", handlers.size());
         Router router = Router.router(vertx);
 
-        // Add CORS support
-        configureCors(router);
-
-        // Add common handlers
+        // Add common middleware
         router.route().handler(LoggerHandler.create());
         router.route().handler(ResponseTimeHandler.create());
         router.route().handler(BodyHandler.create());
 
-        // Health check endpoint
-        router.get("/health").handler(handlers.get("getHealth")::handle);
+        // Configure CORS if enabled
+        configureCors(router);
 
-        // Service One routes
-        router.get("/api/service-one").handler(handlers.get("listServiceOneItems")::handle);
-        router.post("/api/service-one").handler(handlers.get("createServiceOneItem")::handle);
-        router.get("/api/service-one/:id").handler(handlers.get("getServiceOneItem")::handle);
-        router.put("/api/service-one/:id").handler(handlers.get("updateServiceOneItem")::handle);
-        router.delete("/api/service-one/:id").handler(handlers.get("deleteServiceOneItem")::handle);
+        // Configure routes from handlers map
+        configureRoutes(router, handlers);
 
-        // Service Two routes
-        router.get("/api/service-two/:id").handler(handlers.get("getServiceTwoItem")::handle);
-        router.post("/api/service-two").handler(handlers.get("createServiceTwoItem")::handle);
-
-        // Add Swagger UI
-        configureSwaggerUI(router);
-
-        // Fallback handler for 404
-        configureFallbackHandler(router);
-
-        // Error handler
+        // Add error handling
         configureErrorHandler(router);
 
-        logger.info("Router created successfully without OpenAPI specification");
+        logger.info("Router created successfully");
         return Future.succeededFuture(router);
     }
 
-    private Future<Router> createRouterFromOpenAPIOriginal(Map<String, RequestHandler> handlers) {
-        // Configure RouterBuilder options
-        RouterBuilderOptions options = new RouterBuilderOptions()
-                .setRequireSecurityHandlers(false)
-                .setOperationModelKey("operationModel");
-
-        // Create the RouterBuilder from the OpenAPI specification
-        return RouterBuilder.create(vertx, "openapi.yaml")
-                .compose(routerBuilder -> {
-                    logger.info("RouterBuilder created successfully");
-
-                    // Configure the RouterBuilder with options
-                    routerBuilder.setOptions(options);
-
-                    // Add operation handlers
-                    handlers.forEach((operationId, handler) -> {
-                        logger.debug("Adding handler for operation: {}", operationId);
-                        routerBuilder.operation(operationId).handler(ctx -> handler.handle(ctx));
-                    });
-
-                    // Add global handlers
-                    routerBuilder.rootHandler(ctx -> {
-                        LoggerHandler.create().handle(ctx);
-                        ctx.next();
-                    });
-                    routerBuilder.rootHandler(ctx -> {
-                        ResponseTimeHandler.create().handle(ctx);
-                        ctx.next();
-                    });
-                    routerBuilder.rootHandler(ctx -> {
-                        BodyHandler.create().handle(ctx);
-                        ctx.next();
-                    });
-
-                    // Create the router
-                    Router router = routerBuilder.createRouter();
-
-                    // Add CORS support
-                    configureCors(router);
-
-                    // Add Swagger UI
-                    configureSwaggerUI(router);
-
-                    // Fallback handler for 404
-                    configureFallbackHandler(router);
-
-                    // Error handler
-                    configureErrorHandler(router);
-
-                    logger.info("Router created successfully from OpenAPI specification");
-                    return Future.succeededFuture(router);
-                })
-                .recover(err -> {
-                    logger.error("Failed to create router from OpenAPI specification", err);
-
-                    // Fallback to creating a router without OpenAPI
-                    logger.info("Creating router without OpenAPI specification");
-                    Router router = Router.router(vertx);
-
-                    // Add CORS support
-                    configureCors(router);
-
-                    // Add common handlers
-                    router.route().handler(LoggerHandler.create());
-                    router.route().handler(ResponseTimeHandler.create());
-                    router.route().handler(BodyHandler.create());
-
-                    // Health check endpoint
-                    router.get("/health").handler(handlers.get("getHealth")::handle);
-
-                    // Service One routes
-                    router.get("/api/service-one").handler(handlers.get("listServiceOneItems")::handle);
-                    router.post("/api/service-one").handler(handlers.get("createServiceOneItem")::handle);
-                    router.get("/api/service-one/:id").handler(handlers.get("getServiceOneItem")::handle);
-                    router.put("/api/service-one/:id").handler(handlers.get("updateServiceOneItem")::handle);
-                    router.delete("/api/service-one/:id").handler(handlers.get("deleteServiceOneItem")::handle);
-
-                    // Service Two routes
-                    router.get("/api/service-two/:id").handler(handlers.get("getServiceTwoItem")::handle);
-                    router.post("/api/service-two").handler(handlers.get("createServiceTwoItem")::handle);
-
-                    // Fallback handler for 404
-                    configureFallbackHandler(router);
-
-                    // Error handler
-                    configureErrorHandler(router);
-
-                    logger.info("Router created successfully without OpenAPI specification");
-                    return Future.succeededFuture(router);
-                });
-    }
-
     /**
-     * Configures Swagger UI.
+     * Configures routes from the handlers map.
      *
      * @param router the router
+     * @param handlers the map of path patterns to handlers
      */
-    private void configureSwaggerUI(Router router) {
-        logger.debug("Configuring Swagger UI");
-
-        // Serve the OpenAPI specification
-        router.get("/openapi.yaml").handler(ctx -> {
-            ctx.response()
-                .putHeader("Content-Type", "text/yaml")
-                .sendFile("openapi.yaml");
+    private void configureRoutes(Router router, Map<String, io.vertx.core.Handler<io.vertx.ext.web.RoutingContext>> handlers) {
+        handlers.forEach((path, handler) -> {
+            if (path.startsWith("GET:")) {
+                String routePath = path.substring(4);
+                router.get(routePath).handler(handler);
+                logger.debug("Added GET route: {}", routePath);
+            } else if (path.startsWith("POST:")) {
+                String routePath = path.substring(5);
+                router.post(routePath).handler(handler);
+                logger.debug("Added POST route: {}", routePath);
+            } else if (path.startsWith("PUT:")) {
+                String routePath = path.substring(4);
+                router.put(routePath).handler(handler);
+                logger.debug("Added PUT route: {}", routePath);
+            } else if (path.startsWith("DELETE:")) {
+                String routePath = path.substring(7);
+                router.delete(routePath).handler(handler);
+                logger.debug("Added DELETE route: {}", routePath);
+            } else {
+                // Default to GET if no method specified
+                router.get(path).handler(handler);
+                logger.debug("Added default GET route: {}", path);
+            }
         });
 
-        // Redirect to Swagger UI first (before the static handler)
-        router.get("/swagger-ui").handler(ctx -> {
-            ctx.response()
-                .putHeader("Location", "/swagger-ui/index.html?url=/openapi.yaml")
-                .setStatusCode(302)
-                .end();
-        });
-
-        // Serve Swagger UI
-        router.get("/swagger-ui/*").handler(StaticHandler.create("META-INF/resources/webjars/swagger-ui/4.18.2")
-                .setCachingEnabled(false)
-                .setDirectoryListing(false)
-                .setAllowRootFileSystemAccess(false));
-
-        // Also handle /swagger-ui/ (with trailing slash)
-        router.get("/swagger-ui/").handler(ctx -> {
-            ctx.response()
-                .putHeader("Location", "/swagger-ui/index.html?url=/openapi.yaml")
-                .setStatusCode(302)
-                .end();
-        });
-
-        // Add a redirect from the root to Swagger UI
-        router.get("/docs").handler(ctx -> {
-            ctx.response()
-                .putHeader("Location", "/swagger-ui")
-                .setStatusCode(302)
-                .end();
-        });
-
-        logger.info("Swagger UI configured successfully");
+        // Add fallback handler for 404
+        configureFallbackHandler(router);
     }
 
     /**
@@ -272,13 +109,14 @@ public class RouterFactory {
      * @param router the router
      */
     private void configureCors(Router router) {
-        logger.debug("Configuring CORS");
-
         // Get CORS configuration
         JsonObject corsConfig = config.getJsonObject("cors", new JsonObject());
         boolean corsEnabled = corsConfig.getBoolean("enabled", true);
 
         if (corsEnabled) {
+            logger.debug("Configuring CORS");
+
+            // Create a set of allowed headers with sensible defaults
             Set<String> allowedHeaders = new HashSet<>();
             allowedHeaders.add("x-requested-with");
             allowedHeaders.add("Access-Control-Allow-Origin");
@@ -287,10 +125,16 @@ public class RouterFactory {
             allowedHeaders.add("accept");
             allowedHeaders.add("Authorization");
 
-            // Add any additional headers from config
-            corsConfig.getJsonArray("allowed-headers", new JsonArray())
-                    .forEach(header -> allowedHeaders.add(header.toString()));
+            // Add custom headers from configuration if provided
+            JsonArray customHeaders = corsConfig.getJsonArray("allowed-headers");
+            if (customHeaders != null) {
+                for (int i = 0; i < customHeaders.size(); i++) {
+                    allowedHeaders.add(customHeaders.getString(i));
+                }
+                logger.debug("Added custom allowed headers: {}", customHeaders);
+            }
 
+            // Create a set of allowed methods with sensible defaults
             Set<HttpMethod> allowedMethods = new HashSet<>();
             allowedMethods.add(HttpMethod.GET);
             allowedMethods.add(HttpMethod.POST);
@@ -298,18 +142,31 @@ public class RouterFactory {
             allowedMethods.add(HttpMethod.DELETE);
             allowedMethods.add(HttpMethod.OPTIONS);
 
-            // Add any additional methods from config
-            corsConfig.getJsonArray("allowed-methods", new JsonArray())
-                    .forEach(method -> allowedMethods.add(HttpMethod.valueOf(method.toString())));
+            // Add custom methods from configuration if provided
+            JsonArray customMethods = corsConfig.getJsonArray("allowed-methods");
+            if (customMethods != null) {
+                for (int i = 0; i < customMethods.size(); i++) {
+                    String methodName = customMethods.getString(i);
+                    try {
+                        HttpMethod method = HttpMethod.valueOf(methodName);
+                        allowedMethods.add(method);
+                        logger.debug("Added custom allowed method: {}", methodName);
+                    } catch (IllegalArgumentException e) {
+                        logger.warn("Invalid HTTP method in CORS configuration: {}", methodName);
+                    }
+                }
+            }
 
+            // Use configured allowed origin or default to "*"
             String allowedOrigin = corsConfig.getString("allowed-origin", "*");
+            logger.debug("Using allowed origin: {}", allowedOrigin);
 
+            // Add CORS handler to all routes
             router.route().handler(CorsHandler.create(allowedOrigin)
                     .allowedHeaders(allowedHeaders)
                     .allowedMethods(allowedMethods));
 
-            logger.info("CORS configured with origin: {}, {} headers, {} methods", 
-                    allowedOrigin, allowedHeaders.size(), allowedMethods.size());
+            logger.info("CORS configured with custom settings");
         } else {
             logger.info("CORS is disabled");
         }

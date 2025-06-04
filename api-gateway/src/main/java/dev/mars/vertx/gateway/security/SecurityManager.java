@@ -1,26 +1,28 @@
 package dev.mars.vertx.gateway.security;
 
+import io.vertx.core.Handler;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.auth.KeyStoreOptions;
 import io.vertx.ext.auth.PubSecKeyOptions;
 import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.auth.jwt.JWTAuthOptions;
+import io.vertx.ext.web.RoutingContext;
+import io.vertx.ext.web.handler.JWTAuthHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Manager for security-related functionality.
- * Initializes and manages JWT authentication provider.
+ * Simplified manager for security-related functionality.
+ * Security is optional and disabled by default.
  */
 public class SecurityManager {
     private static final Logger logger = LoggerFactory.getLogger(SecurityManager.class);
 
     private final Vertx vertx;
-    private final JsonObject config;
-    private final JWTAuth jwtAuth;
-    private final JwtAuthHandler jwtAuthHandler;
     private final boolean securityEnabled;
+    private final JWTAuth jwtAuth;
+    private final Handler<RoutingContext> jwtAuthHandler;
+    private final String realm;
 
     /**
      * Creates a new security manager.
@@ -30,80 +32,66 @@ public class SecurityManager {
      */
     public SecurityManager(Vertx vertx, JsonObject config) {
         this.vertx = vertx;
-        this.config = config;
 
-        // Check if security is enabled
-        this.securityEnabled = config.getJsonObject("security", new JsonObject())
-                .getBoolean("enabled", false);
+        // Check if security is enabled (disabled by default)
+        JsonObject securityConfig = config.getJsonObject("security", new JsonObject());
+        this.securityEnabled = securityConfig.getBoolean("enabled", false);
+        this.realm = securityConfig.getString("realm", "api-gateway");
+
+        // Initialize JWT auth and handler to null by default
+        JWTAuth jwtAuthTemp = null;
+        Handler<RoutingContext> jwtAuthHandlerTemp = null;
 
         if (securityEnabled) {
             logger.info("Initializing security manager with security enabled");
 
-            // Get JWT configuration
-            JsonObject jwtConfig = config.getJsonObject("security", new JsonObject())
-                    .getJsonObject("jwt", new JsonObject());
+            try {
+                // Create JWT auth with sensible defaults
+                // Look for JWT configuration in different possible locations for backward compatibility
+                JsonObject jwtConfig = securityConfig.getJsonObject("jwt", new JsonObject());
 
-            // Create JWT auth options
-            JWTAuthOptions jwtAuthOptions = new JWTAuthOptions();
+                // Try to get the secret key from different possible locations
+                String secretKey = securityConfig.getString("secret-key", null);
+                if (secretKey == null) {
+                    secretKey = jwtConfig.getString("symmetric-key", "default-api-gateway-secret-key");
+                }
 
-            // Check if we should use a keystore or a symmetric key
-            if (jwtConfig.containsKey("keystore")) {
-                // Get keystore configuration
-                JsonObject keystoreConfig = jwtConfig.getJsonObject("keystore", new JsonObject());
-                String keystorePath = keystoreConfig.getString("path", "keystore.jceks");
-                String keystoreType = keystoreConfig.getString("type", "jceks");
-                String keystorePassword = keystoreConfig.getString("password", "secret");
+                // Ensure the secret key is not null or empty
+                if (secretKey == null || secretKey.isEmpty()) {
+                    secretKey = "default-api-gateway-secret-key";
+                }
 
-                // Create keystore options
-                KeyStoreOptions keyStoreOptions = new KeyStoreOptions()
-                        .setPath(keystorePath)
-                        .setType(keystoreType)
-                        .setPassword(keystorePassword);
+                logger.info("Using symmetric key for JWT authentication: {}", secretKey);
 
-                // Set keystore options
-                jwtAuthOptions.setKeyStore(keyStoreOptions);
+                // Create JWT auth options with the symmetric key
+                JWTAuthOptions options = new JWTAuthOptions();
 
-                logger.info("Using keystore for JWT authentication: {}", keystorePath);
-            } else if (jwtConfig.containsKey("symmetric-key")) {
-                // Get symmetric key
-                String symmetricKey = jwtConfig.getString("symmetric-key", "super-secret-key");
-
-                // Set symmetric key
+                // Add the public/secret key options
                 PubSecKeyOptions pubSecKeyOptions = new PubSecKeyOptions()
-                        .setAlgorithm("HS256")
-                        .setSymmetric(true)
-                        .setSecretKey(symmetricKey);
+                    .setAlgorithm("HS256")
+                    .setSymmetric(true)
+                    .setBuffer(secretKey);  // Use buffer for symmetric keys
 
-                jwtAuthOptions.addPubSecKey(pubSecKeyOptions);
+                options.addPubSecKey(pubSecKeyOptions);
 
-                logger.info("Using symmetric key for JWT authentication");
-            } else {
-                // Default to a test symmetric key
-                String defaultKey = "default-test-key-for-jwt-authentication";
+                jwtAuthTemp = JWTAuth.create(vertx, options);
+                jwtAuthHandlerTemp = JWTAuthHandler.create(jwtAuthTemp);
 
-                // Set default symmetric key
-                PubSecKeyOptions defaultPubSecKeyOptions = new PubSecKeyOptions()
-                        .setAlgorithm("HS256")
-                        .setSymmetric(true)
-                        .setSecretKey(defaultKey);
-
-                jwtAuthOptions.addPubSecKey(defaultPubSecKeyOptions);
-
-                logger.info("Using default symmetric key for JWT authentication");
+                logger.info("Security manager initialized with JWT authentication");
+            } catch (Exception e) {
+                // If JWT initialization fails, log the error and disable security
+                logger.error("Failed to initialize JWT authentication: {}", e.getMessage());
+                logger.info("Falling back to disabled security");
+                // jwtAuthTemp and jwtAuthHandlerTemp remain null
             }
-
-            // Create JWT auth provider
-            this.jwtAuth = JWTAuth.create(vertx, jwtAuthOptions);
-
-            // Create JWT auth handler
-            this.jwtAuthHandler = new JwtAuthHandler(jwtAuth, "api-gateway");
-
-            logger.info("Security manager initialized with JWT authentication");
         } else {
-            logger.info("Initializing security manager with security disabled");
-            this.jwtAuth = null;
-            this.jwtAuthHandler = null;
+            logger.info("Security is disabled");
+            // jwtAuthTemp and jwtAuthHandlerTemp remain null
         }
+
+        // Assign the final values to the instance variables
+        this.jwtAuth = jwtAuthTemp;
+        this.jwtAuthHandler = jwtAuthHandlerTemp;
     }
 
     /**
@@ -116,20 +104,11 @@ public class SecurityManager {
     }
 
     /**
-     * Gets the JWT authentication provider.
-     *
-     * @return the JWT authentication provider, or null if security is disabled
-     */
-    public JWTAuth getJwtAuth() {
-        return jwtAuth;
-    }
-
-    /**
      * Gets the JWT authentication handler.
      *
      * @return the JWT authentication handler, or null if security is disabled
      */
-    public JwtAuthHandler getJwtAuthHandler() {
+    public Handler<RoutingContext> getJwtAuthHandler() {
         return jwtAuthHandler;
     }
 
@@ -137,9 +116,14 @@ public class SecurityManager {
      * Creates a role-based authorization handler.
      *
      * @param requiredRoles the roles required to access the resource
-     * @return the role-based authorization handler
+     * @return the role-based authorization handler, or null if security is disabled
      */
-    public RoleBasedAuthorizationHandler createRoleBasedAuthHandler(String... requiredRoles) {
+    public Handler<RoutingContext> createRoleBasedAuthHandler(String... requiredRoles) {
+        if (!securityEnabled) {
+            logger.warn("Cannot create role-based auth handler: security is disabled");
+            return null;
+        }
+
         return new RoleBasedAuthorizationHandler(requiredRoles);
     }
 
@@ -147,15 +131,24 @@ public class SecurityManager {
      * Generates a JWT token for the specified user.
      *
      * @param userId the user ID
-     * @param roles the user roles
+     * @param roles the user roles array
      * @return the JWT token, or null if security is disabled
      */
     public String generateToken(String userId, String[] roles) {
-        if (!securityEnabled || jwtAuthHandler == null) {
+        if (!securityEnabled || jwtAuth == null) {
             logger.warn("Cannot generate token: security is disabled");
             return null;
         }
 
-        return jwtAuthHandler.generateToken(userId, roles);
+        // Convert roles array to comma-separated string
+        String rolesStr = String.join(",", roles);
+
+        JsonObject claims = new JsonObject()
+                .put("sub", userId)
+                .put("roles", rolesStr)
+                .put("iat", System.currentTimeMillis() / 1000)
+                .put("exp", System.currentTimeMillis() / 1000 + 3600); // 1 hour expiration
+
+        return jwtAuth.generateToken(claims);
     }
 }

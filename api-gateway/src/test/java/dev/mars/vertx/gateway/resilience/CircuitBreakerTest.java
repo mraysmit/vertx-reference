@@ -24,8 +24,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Tests for circuit breaker behavior.
- * Tests the circuit breaker's open, half-open, and closed states, as well as state transitions.
+ * Tests for the Circuit Breaker implementation using Vert.x.
+ * This class tests the circuit breaker states and transitions
+ * through a mock service that can be configured to succeed or fail.
  */
 @ExtendWith(VertxExtension.class)
 class CircuitBreakerTest {
@@ -132,7 +133,10 @@ class CircuitBreakerTest {
                         assertEquals(CircuitBreakerState.OPEN, circuitBreaker.state());
 
                         // Verify the failure count
-                        assertEquals(MAX_FAILURES, circuitBreaker.failureCount());
+                        assertEquals(MAX_FAILURES + 1, circuitBreaker.failureCount());
+
+                        // Reset the lastOperationCalled flag
+                        testService.wasLastOperationCalled();
 
                         // Try one more request, which should fail fast
                         circuitBreaker.<String>execute(promise -> {

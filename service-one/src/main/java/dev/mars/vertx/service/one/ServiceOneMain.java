@@ -1,4 +1,5 @@
 package dev.mars.vertx.service.one;
+import dev.mars.vertx.common.config.ConfigLoader;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
@@ -20,20 +21,27 @@ public class ServiceOneMain {
         VertxOptions options = new VertxOptions();
         Vertx vertx = Vertx.vertx(options);
 
-        // Deploy the Service One verticle
-        DeploymentOptions deploymentOptions = new DeploymentOptions()
-                .setConfig(new JsonObject()
-                        .put("service.address", "service.one")
-                        .put("http.port", 8081) // In case we want to expose an HTTP endpoint
-                );
+        // Load configuration from config.yaml
+        ConfigLoader.load(vertx, "service-one/src/main/resources/config.yaml")
+            .onSuccess(config -> {
+                logger.info("Configuration loaded successfully");
 
-        vertx.deployVerticle(ServiceOneVerticle.class.getName(), deploymentOptions, ar -> {
-            if (ar.succeeded()) {
-                logger.info("Service One verticle deployed successfully: {}", ar.result());
-            } else {
-                logger.error("Failed to deploy Service One verticle", ar.cause());
+                // Deploy the Service One verticle with the loaded configuration
+                DeploymentOptions deploymentOptions = new DeploymentOptions()
+                        .setConfig(config);
+
+                vertx.deployVerticle(ServiceOneVerticle.class.getName(), deploymentOptions, ar -> {
+                    if (ar.succeeded()) {
+                        logger.info("Service One verticle deployed successfully: {}", ar.result());
+                    } else {
+                        logger.error("Failed to deploy Service One verticle", ar.cause());
+                        vertx.close();
+                    }
+                });
+            })
+            .onFailure(err -> {
+                logger.error("Failed to load configuration", err);
                 vertx.close();
-            }
-        });
+            });
     }
 }

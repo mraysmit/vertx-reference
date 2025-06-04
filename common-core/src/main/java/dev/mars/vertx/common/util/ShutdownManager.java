@@ -1,7 +1,9 @@
 package dev.mars.vertx.common.util;
 
+import dev.mars.vertx.common.config.ConfigLoader;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,35 +20,52 @@ import java.util.function.Supplier;
 public class ShutdownManager {
     private static final Logger logger = LoggerFactory.getLogger(ShutdownManager.class);
     private static final int DEFAULT_SHUTDOWN_TIMEOUT_SECONDS = 30;
-    
+
     private final Vertx vertx;
     private final List<Supplier<Future<Void>>> shutdownHooks = new ArrayList<>();
     private final int shutdownTimeoutSeconds;
-    
+
     /**
-     * Creates a new ShutdownManager with the default shutdown timeout.
-     * 
+     * Creates a new ShutdownManager with the timeout loaded from configuration.
+     *
      * @param vertx the Vertx instance to manage
      */
     public ShutdownManager(Vertx vertx) {
-        this(vertx, DEFAULT_SHUTDOWN_TIMEOUT_SECONDS);
+        this.vertx = vertx;
+
+        // Try to load shutdown timeout from config
+        int timeout = DEFAULT_SHUTDOWN_TIMEOUT_SECONDS;
+        try {
+            JsonObject config = ConfigLoader.load(vertx, "common-core/src/main/resources/config.yaml").result();
+            if (config != null) {
+                timeout = config.getJsonObject("shutdown", new JsonObject())
+                        .getInteger("timeout", DEFAULT_SHUTDOWN_TIMEOUT_SECONDS);
+                logger.info("Loaded shutdown timeout from config: {} seconds", timeout);
+            }
+        } catch (Exception e) {
+            logger.warn("Failed to load shutdown timeout from config, using default: {} seconds", 
+                    DEFAULT_SHUTDOWN_TIMEOUT_SECONDS, e);
+        }
+
+        this.shutdownTimeoutSeconds = timeout;
+        logger.info("ShutdownManager created with timeout of {} seconds", shutdownTimeoutSeconds);
     }
-    
+
     /**
      * Creates a new ShutdownManager with a custom shutdown timeout.
-     * 
+     *
      * @param vertx the Vertx instance to manage
      * @param shutdownTimeoutSeconds the maximum time to wait for shutdown in seconds
      */
     public ShutdownManager(Vertx vertx, int shutdownTimeoutSeconds) {
         this.vertx = vertx;
         this.shutdownTimeoutSeconds = shutdownTimeoutSeconds;
-        logger.info("ShutdownManager created with timeout of {} seconds", shutdownTimeoutSeconds);
+        logger.info("ShutdownManager created with custom timeout of {} seconds", shutdownTimeoutSeconds);
     }
-    
+
     /**
      * Adds a shutdown hook to be executed during shutdown.
-     * 
+     *
      * @param hook a supplier that returns a Future to be completed when the hook is done
      * @return this ShutdownManager for method chaining
      */
@@ -55,7 +74,7 @@ public class ShutdownManager {
         logger.debug("Added shutdown hook: {}", hook);
         return this;
     }
-    
+
     /**
      * Registers a JVM shutdown hook to trigger graceful shutdown.
      */
@@ -66,17 +85,17 @@ public class ShutdownManager {
         }));
         logger.info("JVM shutdown hook registered");
     }
-    
+
     /**
      * Initiates a graceful shutdown of the application.
      * Executes all registered shutdown hooks and then closes the Vertx instance.
      */
     public void shutdown() {
         logger.info("Starting graceful shutdown sequence");
-        
+
         // Create a latch to wait for shutdown to complete
         CountDownLatch latch = new CountDownLatch(1);
-        
+
         // Execute all shutdown hooks in sequence
         Future<Void> future = Future.succeededFuture();
         for (Supplier<Future<Void>> hook : shutdownHooks) {
@@ -89,7 +108,7 @@ public class ShutdownManager {
                 }
             });
         }
-        
+
         // Close Vertx after all hooks are executed
         future.compose(v -> {
             logger.info("All shutdown hooks executed, closing Vertx");
@@ -102,7 +121,7 @@ public class ShutdownManager {
             }
             latch.countDown();
         });
-        
+
         // Wait for shutdown to complete or timeout
         try {
             if (!latch.await(shutdownTimeoutSeconds, TimeUnit.SECONDS)) {
@@ -112,7 +131,7 @@ public class ShutdownManager {
             Thread.currentThread().interrupt();
             logger.error("Shutdown interrupted", e);
         }
-        
+
         logger.info("Graceful shutdown completed");
     }
 }

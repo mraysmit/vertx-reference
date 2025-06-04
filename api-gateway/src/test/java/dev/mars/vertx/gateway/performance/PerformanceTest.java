@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Performance tests for the API Gateway.
  * These tests measure response times and throughput under load.
  */
+
 @ExtendWith(VertxExtension.class)
 class PerformanceTest {
 

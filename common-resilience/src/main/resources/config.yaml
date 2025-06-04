@@ -1,0 +1,16 @@
+# Common Resilience Configuration
+
+# Circuit Breaker Configuration
+circuit-breaker:
+  # Default settings for circuit breakers
+  defaults:
+    # Maximum number of failures before opening the circuit
+    max-failures: 5
+    # Timeout in milliseconds
+    timeout: 10000
+    # Reset timeout in milliseconds (time before attempting to reset the circuit)
+    reset-timeout: 30000
+    # Whether to use fallback on failure
+    fallback-on-failure: true
+    # Whether to use notification address (circuit-breaker.<name>)
+    use-notification-address: true

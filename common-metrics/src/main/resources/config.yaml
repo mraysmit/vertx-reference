@@ -1,0 +1,25 @@
+# Common Metrics Configuration
+
+# Prometheus Configuration
+prometheus:
+  # Whether to enable Prometheus metrics
+  enabled: true
+  # Whether to start an embedded server for Prometheus metrics
+  embedded-server:
+    enabled: true
+    # Port for the embedded Prometheus metrics server
+    port: 9090
+  # Whether to publish quantiles
+  publish-quantiles: true
+
+# JVM Metrics Configuration
+jvm-metrics:
+  # Whether to enable JVM metrics by default
+  enabled: true
+  # Types of JVM metrics to enable
+  types:
+    class-loader: true
+    memory: true
+    gc: true
+    thread: true
+    processor: true

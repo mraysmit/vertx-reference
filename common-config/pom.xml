@@ -19,12 +19,6 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>dev.mars</groupId>
-            <artifactId>common-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
         <!-- Vert.x Config for configuration management -->
         <dependency>
             <groupId>io.vertx</groupId>
