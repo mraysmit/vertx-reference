@@ -62,4 +62,20 @@ public interface WeatherRepository {
      * @return a Future with the count
      */
     Future<Integer> count();
+
+    /**
+     * Finds weather data by ID.
+     *
+     * @param id the weather data ID
+     * @return a Future with the weather data, or a failed future if not found
+     */
+    Future<Weather> findById(String id);
+
+    /**
+     * Deletes weather data by ID.
+     *
+     * @param id the weather data ID
+     * @return a Future that completes when deletion is done
+     */
+    Future<Void> deleteById(String id);
 }

@@ -7,6 +7,7 @@ import java.util.Objects;
  * Model class representing Weather data.
  */
 public class Weather {
+    private String id;
     private String city;
     private double temperature;
     private double humidity;
@@ -23,6 +24,27 @@ public class Weather {
     /**
      * Constructor with all fields.
      *
+     * @param id the unique identifier
+     * @param city the city name
+     * @param temperature the temperature in Celsius
+     * @param humidity the humidity percentage
+     * @param windSpeed the wind speed in km/h
+     * @param condition the weather condition
+     * @param timestamp the timestamp when the weather data was generated
+     */
+    public Weather(String id, String city, double temperature, double humidity, double windSpeed, String condition, long timestamp) {
+        this.id = id;
+        this.city = city;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.windSpeed = windSpeed;
+        this.condition = condition;
+        this.timestamp = timestamp;
+    }
+
+    /**
+     * Constructor with all fields except ID (ID will be generated).
+     *
      * @param city the city name
      * @param temperature the temperature in Celsius
      * @param humidity the humidity percentage
@@ -31,6 +53,7 @@ public class Weather {
      * @param timestamp the timestamp when the weather data was generated
      */
     public Weather(String city, double temperature, double humidity, double windSpeed, String condition, long timestamp) {
+        this.id = generateId();
         this.city = city;
         this.temperature = temperature;
         this.humidity = humidity;
@@ -49,8 +72,9 @@ public class Weather {
         if (json == null) {
             return null;
         }
-        
+
         return new Weather(
+            json.getString("id"),
             json.getString("city"),
             json.getDouble("temperature", 0.0),
             json.getDouble("humidity", 0.0),
@@ -67,6 +91,7 @@ public class Weather {
      */
     public JsonObject toJson() {
         return new JsonObject()
+            .put("id", id)
             .put("city", city)
             .put("temperature", temperature)
             .put("humidity", humidity)
@@ -76,6 +101,14 @@ public class Weather {
     }
 
     // Getters and setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getCity() {
         return city;
     }
@@ -124,24 +157,33 @@ public class Weather {
         this.timestamp = timestamp;
     }
 
+    /**
+     * Generates a unique ID for the weather data.
+     *
+     * @return a unique ID
+     */
+    private String generateId() {
+        return "weather-" + System.currentTimeMillis() + "-" + (int)(Math.random() * 1000);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Weather weather = (Weather) o;
-        return Objects.equals(city, weather.city) && 
-               Objects.equals(timestamp, weather.timestamp);
+        return Objects.equals(id, weather.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, timestamp);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "Weather{" +
-                "city='" + city + '\'' +
+                "id='" + id + '\'' +
+                ", city='" + city + '\'' +
                 ", temperature=" + temperature +
                 ", humidity=" + humidity +
                 ", windSpeed=" + windSpeed +

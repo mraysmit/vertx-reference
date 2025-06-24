@@ -158,6 +158,38 @@ public class InMemoryWeatherRepository implements WeatherRepository {
         return Future.succeededFuture(cities.size());
     }
 
+    @Override
+    public Future<Weather> findById(String id) {
+        logger.debug("Finding weather by ID: {}", id);
+
+        Promise<Weather> promise = Promise.promise();
+        Weather weather = weatherData.get(id);
+        if (weather != null) {
+            logger.debug("Found weather: {}", weather);
+            promise.complete(weather);
+        } else {
+            logger.debug("Weather not found with ID: {}", id);
+            promise.fail("Weather not found with ID: " + id);
+        }
+        return promise.future();
+    }
+
+    @Override
+    public Future<Void> deleteById(String id) {
+        logger.debug("Deleting weather by ID: {}", id);
+
+        Promise<Void> promise = Promise.promise();
+        Weather removed = weatherData.remove(id);
+        if (removed != null) {
+            logger.debug("Deleted weather: {}", removed);
+            promise.complete();
+        } else {
+            logger.debug("Weather not found with ID: {}", id);
+            promise.fail("Weather not found with ID: " + id);
+        }
+        return promise.future();
+    }
+
     /**
      * Generates random weather data for a city.
      *

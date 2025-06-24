@@ -141,6 +141,15 @@ public class ApiGatewayVerticle extends AbstractVerticle {
             request.put("action", "stats");
             return request;
         }, "service-two"));
+
+        // Service Two CRUD operations
+        handlers.put("GET:/api/service-two", new ServiceHandler(serviceTwoClient, ctx -> {
+            JsonObject request = ServiceHandler.createDefaultRequestObject(ctx);
+            request.put("action", "list");
+            return request;
+        }, "service-two"));
+        handlers.put("PUT:/api/service-two/:id", new ServiceHandler(serviceTwoClient, "service-two"));
+        handlers.put("DELETE:/api/service-two/:id", new ServiceHandler(serviceTwoClient, "service-two"));
         handlers.put("GET:/api/service-two/:id", new ServiceHandler(serviceTwoClient, "service-two"));
         handlers.put("POST:/api/service-two", new ServiceHandler(serviceTwoClient, "service-two"));
 

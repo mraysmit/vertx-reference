@@ -8644,3 +8644,241 @@ java.lang.NullPointerException: Cannot invoke "dev.mars.vertx.common.eventbus.Se
 2025-06-04 10:00:36.851 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Service unregistered and consumer unregistered successfully
 2025-06-04 10:00:36.856 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Vertx closed successfully
 2025-06-04 10:00:36.856 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Shutdown complete
+2025-06-20 16:57:41.865 [main] INFO  d.m.v.b.VertxReferenceBootstrap - Starting Vertx-Reference Bootstrap
+2025-06-20 16:57:42.160 [main] INFO  d.m.vertx.common.config.ConfigLoader - Loading YAML configuration from: C:\Users\mraysmit\dev\idea-projects\vertx-playground-workspace\vertx-reference\vertx-reference-bootstrap\src\main\resources\config.yaml
+2025-06-20 16:57:42.336 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully with 121 entries
+2025-06-20 16:57:42.336 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Configuration loaded successfully
+2025-06-20 16:57:42.371 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying services
+2025-06-20 16:57:42.371 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service One
+2025-06-20 16:57:42.372 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service One with address: service.one and HTTP port: 8081
+2025-06-20 16:57:42.383 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Starting Service One Verticle
+2025-06-20 16:57:42.384 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Initializing components
+2025-06-20 16:57:42.384 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service Two
+2025-06-20 16:57:42.384 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service Two with address: service.two and HTTP port: 8082
+2025-06-20 16:57:42.387 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying API Gateway
+2025-06-20 16:57:42.388 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Starting Service Two Verticle
+2025-06-20 16:57:42.388 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying API Gateway with HTTP port: 8080
+2025-06-20 16:57:42.388 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Initializing components
+2025-06-20 16:57:42.390 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.390 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - Starting API Gateway Verticle
+2025-06-20 16:57:42.391 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-4] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-2] INFO  d.m.v.s.one.service.ItemService - Initializing item service
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-3] INFO  d.m.v.s.two.service.WeatherService - Initializing weather service
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-2] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Created MicroserviceClientFactory
+2025-06-20 16:57:42.396 [vert.x-eventloop-thread-3] INFO  d.m.v.s.t.r.InMemoryWeatherRepository - Initializing repository with sample data
+2025-06-20 16:57:42.397 [vert.x-eventloop-thread-2] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-20 16:57:42.397 [vert.x-eventloop-thread-3] INFO  d.m.v.s.t.r.InMemoryWeatherRepository - Sample data initialized with 10 cities
+2025-06-20 16:57:42.397 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Created RouterFactory
+2025-06-20 16:57:42.397 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client for service: service-one
+2025-06-20 16:57:42.397 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Registering event bus consumer with service name: service.two
+2025-06-20 16:57:42.397 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Registering event bus consumer with service name: service.one
+2025-06-20 16:57:42.398 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating circuit breaker for service service-one with options: maxFailures=5, timeout=10000, resetTimeout=30000
+2025-06-20 16:57:42.398 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Registering service: Service One at address: service.one
+2025-06-20 16:57:42.398 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Registering service: Service Two at address: service.two
+2025-06-20 16:57:42.399 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: service-one (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-20 16:57:42.406 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service registered successfully: Service Two
+2025-06-20 16:57:42.406 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service registered successfully: Service One
+2025-06-20 16:57:42.407 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: service.two
+2025-06-20 16:57:42.407 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: service.one
+2025-06-20 16:57:42.411 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Service One Verticle started successfully
+2025-06-20 16:57:42.411 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Service Two Verticle started successfully
+2025-06-20 16:57:42.419 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker service-one created successfully
+2025-06-20 16:57:42.419 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client with address: service.one
+2025-06-20 16:57:42.420 [vert.x-eventloop-thread-4] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.420 [vert.x-eventloop-thread-4] INFO  d.m.v.g.service.MicroserviceClient - Created microservice client for address: service.one
+2025-06-20 16:57:42.421 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client for service: service-two
+2025-06-20 16:57:42.421 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating circuit breaker for service service-two with options: maxFailures=5, timeout=10000, resetTimeout=30000
+2025-06-20 16:57:42.421 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: service-two (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-20 16:57:42.421 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker service-two created successfully
+2025-06-20 16:57:42.421 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client with address: service.two
+2025-06-20 16:57:42.421 [vert.x-eventloop-thread-4] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.421 [vert.x-eventloop-thread-4] INFO  d.m.v.g.service.MicroserviceClient - Created microservice client for address: service.two
+2025-06-20 16:57:42.425 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Creating router with 15 handlers
+2025-06-20 16:57:42.444 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - CORS configured with custom settings
+2025-06-20 16:57:42.447 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Router created successfully
+2025-06-20 16:57:42.522 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - HTTP server started on port 8080
+2025-06-20 16:57:42.522 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - All services deployed successfully
+2025-06-20 16:57:42.524 [main] INFO  d.m.v.b.VertxReferenceBootstrapTest - Testing Service Two endpoint
+2025-06-20 16:57:42.736 [vert.x-eventloop-thread-3] INFO  d.m.v.s.two.handler.WeatherHandler - Handling request: {"action":"cities"}
+2025-06-20 16:57:42.736 [vert.x-eventloop-thread-3] INFO  d.m.v.s.two.service.WeatherService - Listing all cities
+2025-06-20 16:57:42.747 [vert.x-eventloop-thread-4] INFO  i.v.e.w.h.impl.LoggerHandlerImpl - 127.0.0.1 - - [Fri, 20 Jun 2025 08:57:42 GMT] "POST /api/service-two HTTP/1.1" 200 121 "-" "Vert.x-WebClient/4.4.6"
+2025-06-20 16:57:42.760 [main] INFO  d.m.v.b.VertxReferenceBootstrap - Shutting down
+2025-06-20 16:57:42.772 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - Stopping API Gateway Verticle
+2025-06-20 16:57:42.772 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Unregistering event bus consumer with service name: service.one
+2025-06-20 16:57:42.772 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Unregistering event bus consumer with service name: service.two
+2025-06-20 16:57:42.773 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Stopping Service One Verticle
+2025-06-20 16:57:42.773 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Stopping Service Two Verticle
+2025-06-20 16:57:42.773 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Unregistering service: service-one
+2025-06-20 16:57:42.773 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Unregistering service: Service Two
+2025-06-20 16:57:42.773 [vert.x-eventloop-thread-2] WARN  d.m.v.c.e.ServiceDiscoveryManager - Service not found for unregistration: service-one
+2025-06-20 16:57:42.773 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: service.one
+2025-06-20 16:57:42.774 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Service unregistered and consumer unregistered successfully
+2025-06-20 16:57:42.775 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - HTTP server closed successfully
+2025-06-20 16:57:42.775 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service unregistered successfully: Service Two
+2025-06-20 16:57:42.775 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: service.two
+2025-06-20 16:57:42.776 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Service unregistered and consumer unregistered successfully
+2025-06-20 16:57:42.785 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Vertx closed successfully
+2025-06-20 16:57:42.785 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Shutdown complete
+2025-06-20 16:57:42.792 [main] INFO  d.m.v.b.VertxReferenceBootstrap - Starting Vertx-Reference Bootstrap
+2025-06-20 16:57:42.821 [main] INFO  d.m.vertx.common.config.ConfigLoader - Loading YAML configuration from: C:\Users\mraysmit\dev\idea-projects\vertx-playground-workspace\vertx-reference\vertx-reference-bootstrap\src\main\resources\config.yaml
+2025-06-20 16:57:42.828 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully with 121 entries
+2025-06-20 16:57:42.828 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Configuration loaded successfully
+2025-06-20 16:57:42.828 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying services
+2025-06-20 16:57:42.828 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service One
+2025-06-20 16:57:42.828 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service One with address: service.one and HTTP port: 8081
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service Two
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service Two with address: service.two and HTTP port: 8082
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Starting Service One Verticle
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Initializing components
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying API Gateway
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying API Gateway with HTTP port: 8080
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Starting Service Two Verticle
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Initializing components
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - Starting API Gateway Verticle
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.s.one.service.ItemService - Initializing item service
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Registering event bus consumer with service name: service.one
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-3] INFO  d.m.v.s.two.service.WeatherService - Initializing weather service
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Registering service: Service One at address: service.one
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-3] INFO  d.m.v.s.t.r.InMemoryWeatherRepository - Initializing repository with sample data
+2025-06-20 16:57:42.829 [vert.x-eventloop-thread-3] INFO  d.m.v.s.t.r.InMemoryWeatherRepository - Sample data initialized with 10 cities
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Registering event bus consumer with service name: service.two
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Registering service: Service Two at address: service.two
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Created MicroserviceClientFactory
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Created RouterFactory
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client for service: service-one
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service registered successfully: Service One
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating circuit breaker for service service-one with options: maxFailures=5, timeout=10000, resetTimeout=30000
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: service.one
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: service-one (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service registered successfully: Service Two
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Service One Verticle started successfully
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: service.two
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Service Two Verticle started successfully
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker service-one created successfully
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client with address: service.one
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.g.service.MicroserviceClient - Created microservice client for address: service.one
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client for service: service-two
+2025-06-20 16:57:42.830 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating circuit breaker for service service-two with options: maxFailures=5, timeout=10000, resetTimeout=30000
+2025-06-20 16:57:42.831 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: service-two (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-20 16:57:42.831 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker service-two created successfully
+2025-06-20 16:57:42.831 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client with address: service.two
+2025-06-20 16:57:42.832 [vert.x-eventloop-thread-4] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.832 [vert.x-eventloop-thread-4] INFO  d.m.v.g.service.MicroserviceClient - Created microservice client for address: service.two
+2025-06-20 16:57:42.832 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Creating router with 15 handlers
+2025-06-20 16:57:42.832 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - CORS configured with custom settings
+2025-06-20 16:57:42.832 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Router created successfully
+2025-06-20 16:57:42.833 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - HTTP server started on port 8080
+2025-06-20 16:57:42.834 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - All services deployed successfully
+2025-06-20 16:57:42.834 [main] INFO  d.m.v.b.VertxReferenceBootstrapTest - Testing health endpoint
+2025-06-20 16:57:42.838 [vert.x-eventloop-thread-4] INFO  i.v.e.w.h.impl.LoggerHandlerImpl - 127.0.0.1 - - [Fri, 20 Jun 2025 08:57:42 GMT] "GET /health HTTP/1.1" 200 41 "-" "Vert.x-WebClient/4.4.6"
+2025-06-20 16:57:42.840 [main] INFO  d.m.v.b.VertxReferenceBootstrap - Shutting down
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Unregistering event bus consumer with service name: service.one
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Stopping Service One Verticle
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Unregistering service: service-one
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-2] WARN  d.m.v.c.e.ServiceDiscoveryManager - Service not found for unregistration: service-one
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - Stopping API Gateway Verticle
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Unregistering event bus consumer with service name: service.two
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Stopping Service Two Verticle
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: service.one
+2025-06-20 16:57:42.840 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Unregistering service: Service Two
+2025-06-20 16:57:42.841 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Service unregistered and consumer unregistered successfully
+2025-06-20 16:57:42.841 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service unregistered successfully: Service Two
+2025-06-20 16:57:42.841 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - HTTP server closed successfully
+2025-06-20 16:57:42.841 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: service.two
+2025-06-20 16:57:42.841 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Service unregistered and consumer unregistered successfully
+2025-06-20 16:57:42.846 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Vertx closed successfully
+2025-06-20 16:57:42.847 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Shutdown complete
+2025-06-20 16:57:42.848 [main] INFO  d.m.v.b.VertxReferenceBootstrap - Starting Vertx-Reference Bootstrap
+2025-06-20 16:57:42.875 [main] INFO  d.m.vertx.common.config.ConfigLoader - Loading YAML configuration from: C:\Users\mraysmit\dev\idea-projects\vertx-playground-workspace\vertx-reference\vertx-reference-bootstrap\src\main\resources\config.yaml
+2025-06-20 16:57:42.880 [vert.x-eventloop-thread-0] INFO  d.m.vertx.common.config.ConfigLoader - Configuration loaded successfully with 121 entries
+2025-06-20 16:57:42.880 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Configuration loaded successfully
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying services
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service One
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service One with address: service.one and HTTP port: 8081
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service Two
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying Service Two with address: service.two and HTTP port: 8082
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Starting Service One Verticle
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Initializing components
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying API Gateway
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - Deploying API Gateway with HTTP port: 8080
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Starting Service Two Verticle
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Initializing components
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - Starting API Gateway Verticle
+2025-06-20 16:57:42.881 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.s.one.service.ItemService - Initializing item service
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.s.o.r.InMemoryItemRepository - Initializing repository with sample data
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.s.o.r.InMemoryItemRepository - Sample data initialized with 5 items
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Registering event bus consumer with service name: service.one
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Registering service: Service One at address: service.one
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.s.two.service.WeatherService - Initializing weather service
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.c.e.ServiceDiscoveryManager - ServiceDiscoveryManager initialized
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.s.t.r.InMemoryWeatherRepository - Initializing repository with sample data
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Created MicroserviceClientFactory
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Created RouterFactory
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.s.t.r.InMemoryWeatherRepository - Sample data initialized with 10 cities
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client for service: service-one
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service registered successfully: Service One
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Registering event bus consumer with service name: service.two
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating circuit breaker for service service-one with options: maxFailures=5, timeout=10000, resetTimeout=30000
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: service.one
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Registering service: Service Two at address: service.two
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: service-one (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Service One Verticle started successfully
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service registered successfully: Service Two
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - Registering consumer for address: service.two
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Service Two Verticle started successfully
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker service-one created successfully
+2025-06-20 16:57:42.882 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client with address: service.one
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.g.service.MicroserviceClient - Created microservice client for address: service.one
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client for service: service-two
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating circuit breaker for service service-two with options: maxFailures=5, timeout=10000, resetTimeout=30000
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Creating circuit breaker: service-two (maxFailures=5, timeout=10000ms, resetTimeout=30000ms)
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.c.r.CircuitBreakerFactory - Circuit breaker service-two created successfully
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.g.s.MicroserviceClientFactory - Creating client with address: service.two
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.c.eventbus.EventBusService - EventBusService initialized
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.g.service.MicroserviceClient - Created microservice client for address: service.two
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Creating router with 15 handlers
+2025-06-20 16:57:42.883 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - CORS configured with custom settings
+2025-06-20 16:57:42.884 [vert.x-eventloop-thread-4] INFO  d.m.v.gateway.router.RouterFactory - Router created successfully
+2025-06-20 16:57:42.885 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - HTTP server started on port 8080
+2025-06-20 16:57:42.885 [vert.x-eventloop-thread-0] INFO  d.m.v.b.VertxReferenceBootstrap - All services deployed successfully
+2025-06-20 16:57:42.885 [main] INFO  d.m.v.b.VertxReferenceBootstrapTest - Testing Service One endpoint
+2025-06-20 16:57:42.888 [vert.x-eventloop-thread-2] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"action":"create","name":"Test Item","description":"This is a test item created by the test"}
+2025-06-20 16:57:42.888 [vert.x-eventloop-thread-2] INFO  d.m.v.s.one.service.ItemService - Creating new item: {"action":"create","name":"Test Item","description":"This is a test item created by the test"}
+2025-06-20 16:57:42.889 [vert.x-eventloop-thread-4] INFO  i.v.e.w.h.impl.LoggerHandlerImpl - 127.0.0.1 - - [Fri, 20 Jun 2025 08:57:42 GMT] "POST /api/service-one HTTP/1.1" 200 146 "-" "Vert.x-WebClient/4.4.6"
+2025-06-20 16:57:42.891 [vert.x-eventloop-thread-2] INFO  d.m.v.s.one.handler.ItemHandler - Handling request: {"id":"9a05e689-368c-4c04-982b-3a2a793bb057"}
+2025-06-20 16:57:42.891 [vert.x-eventloop-thread-2] INFO  d.m.v.s.one.service.ItemService - Getting item with ID: 9a05e689-368c-4c04-982b-3a2a793bb057
+2025-06-20 16:57:42.895 [vert.x-eventloop-thread-4] INFO  i.v.e.w.h.impl.LoggerHandlerImpl - 127.0.0.1 - - [Fri, 20 Jun 2025 08:57:42 GMT] "GET /api/service-one/9a05e689-368c-4c04-982b-3a2a793bb057 HTTP/1.1" 200 146 "-" "Vert.x-WebClient/4.4.6"
+2025-06-20 16:57:42.896 [main] INFO  d.m.v.b.VertxReferenceBootstrap - Shutting down
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Unregistering event bus consumer with service name: service.one
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Stopping Service One Verticle
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - Stopping API Gateway Verticle
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Unregistering event bus consumer with service name: service.two
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-2] INFO  d.m.v.c.e.ServiceDiscoveryManager - Unregistering service: service-one
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Stopping Service Two Verticle
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-2] WARN  d.m.v.c.e.ServiceDiscoveryManager - Service not found for unregistration: service-one
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Unregistering service: Service Two
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-2] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: service.one
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-2] INFO  d.m.v.service.one.ServiceOneVerticle - Service unregistered and consumer unregistered successfully
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-3] INFO  d.m.v.c.e.ServiceDiscoveryManager - Service unregistered successfully: Service Two
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-4] INFO  d.m.vertx.gateway.ApiGatewayVerticle - HTTP server closed successfully
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-3] INFO  d.m.v.c.eventbus.EventBusService - Unregistering consumer for address: service.two
+2025-06-20 16:57:42.897 [vert.x-eventloop-thread-3] INFO  d.m.v.service.two.ServiceTwoVerticle - Service unregistered and consumer unregistered successfully
+2025-06-20 16:57:42.902 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Vertx closed successfully
+2025-06-20 16:57:42.902 [vert.x-eventloop-thread-44] INFO  d.m.v.b.VertxReferenceBootstrap - Shutdown complete

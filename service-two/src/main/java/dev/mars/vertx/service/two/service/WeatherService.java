@@ -136,6 +136,128 @@ public class WeatherService {
     }
 
     /**
+     * Gets an item by ID.
+     *
+     * @param id the item ID
+     * @return a Future with the item as a JsonObject
+     */
+    public Future<JsonObject> getItem(String id) {
+        logger.info("Getting item with ID: {}", id);
+        incrementRequestCounter();
+
+        return weatherRepository.findById(id)
+            .map(Weather::toJson)
+            .recover(err -> {
+                logger.warn("Item not found with ID: {}", id);
+                return Future.failedFuture("Item not found with ID: " + id);
+            });
+    }
+
+    /**
+     * Lists all items.
+     *
+     * @return a Future with the list of items as a JsonObject
+     */
+    public Future<JsonObject> listItems() {
+        logger.info("Listing all items");
+        incrementRequestCounter();
+
+        return weatherRepository.findAll()
+            .map(weatherList -> {
+                JsonObject result = new JsonObject()
+                    .put("items", weatherList.stream().map(Weather::toJson).toArray())
+                    .put("count", weatherList.size());
+
+                return result;
+            });
+    }
+
+    /**
+     * Creates a new item.
+     *
+     * @param itemData the item data
+     * @return a Future with the created item as a JsonObject
+     */
+    public Future<JsonObject> createItem(JsonObject itemData) {
+        logger.info("Creating new item: {}", itemData);
+        incrementRequestCounter();
+
+        Weather weather = new Weather();
+        weather.setCity(itemData.getString("city", "Unknown"));
+        weather.setTemperature(itemData.getDouble("temperature", 20.0));
+        weather.setDescription(itemData.getString("description", "Clear"));
+        weather.setHumidity(itemData.getInteger("humidity", 50));
+        weather.setWindSpeed(itemData.getDouble("windSpeed", 5.0));
+
+        return weatherRepository.save(weather)
+            .map(Weather::toJson);
+    }
+
+    /**
+     * Updates an existing item.
+     *
+     * @param itemData the item data containing the ID and updated fields
+     * @return a Future with the updated item as a JsonObject
+     */
+    public Future<JsonObject> updateItem(JsonObject itemData) {
+        String id = itemData.getString("id");
+        if (id == null) {
+            return Future.failedFuture("ID is required for update");
+        }
+
+        logger.info("Updating item with ID: {}", id);
+        incrementRequestCounter();
+
+        return weatherRepository.findById(id)
+            .compose(weather -> {
+                // Update fields if provided
+                if (itemData.containsKey("city")) {
+                    weather.setCity(itemData.getString("city"));
+                }
+                if (itemData.containsKey("temperature")) {
+                    weather.setTemperature(itemData.getDouble("temperature"));
+                }
+                if (itemData.containsKey("description")) {
+                    weather.setDescription(itemData.getString("description"));
+                }
+                if (itemData.containsKey("humidity")) {
+                    weather.setHumidity(itemData.getInteger("humidity"));
+                }
+                if (itemData.containsKey("windSpeed")) {
+                    weather.setWindSpeed(itemData.getDouble("windSpeed"));
+                }
+
+                return weatherRepository.save(weather);
+            })
+            .map(Weather::toJson)
+            .recover(err -> {
+                logger.warn("Failed to update item with ID: {}", id);
+                return Future.failedFuture("Item not found with ID: " + id);
+            });
+    }
+
+    /**
+     * Deletes an item by ID.
+     *
+     * @param id the item ID
+     * @return a Future with the deletion result as a JsonObject
+     */
+    public Future<JsonObject> deleteItem(String id) {
+        logger.info("Deleting item with ID: {}", id);
+        incrementRequestCounter();
+
+        return weatherRepository.deleteById(id)
+            .map(v -> new JsonObject()
+                .put("success", true)
+                .put("message", "Item deleted successfully")
+                .put("id", id))
+            .recover(err -> {
+                logger.warn("Failed to delete item with ID: {}", id);
+                return Future.failedFuture("Item not found with ID: " + id);
+            });
+    }
+
+    /**
      * Increments the request counter.
      *
      * @return the new count

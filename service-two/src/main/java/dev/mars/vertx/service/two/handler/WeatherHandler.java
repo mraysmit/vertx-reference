@@ -47,14 +47,40 @@ public class WeatherHandler implements WeatherHandlerInterface {
                         return listCities().map(cities -> (Object) cities);
                     case "stats":
                         return getStats().map(stats -> (Object) stats);
+                    case "list":
+                        return listItems().map(items -> (Object) items);
                     default:
                         return Future.failedFuture("Unknown action: " + action);
                 }
-            } 
+            }
+            // Handle standard CRUD operations
+            else if (request.containsKey("method")) {
+                String method = request.getString("method");
+                switch (method) {
+                    case "GET":
+                        if (request.containsKey("id")) {
+                            return getItem(request.getString("id")).map(item -> (Object) item);
+                        } else {
+                            return listItems().map(items -> (Object) items);
+                        }
+                    case "POST":
+                        return createItem(request).map(item -> (Object) item);
+                    case "PUT":
+                        return updateItem(request).map(item -> (Object) item);
+                    case "DELETE":
+                        return deleteItem(request.getString("id")).map(result -> (Object) result);
+                    default:
+                        return Future.failedFuture("Unknown method: " + method);
+                }
+            }
             // If no action but has city, return weather for that city
             else if (request.containsKey("city")) {
                 String city = request.getString("city");
                 return getWeatherForCity(city).map(weather -> (Object) weather);
+            }
+            // If has id, get item by id
+            else if (request.containsKey("id")) {
+                return getItem(request.getString("id")).map(item -> (Object) item);
             } else {
                 // Default to returning weather for a random city
                 return getRandomWeather().map(weather -> (Object) weather);
@@ -127,5 +153,59 @@ public class WeatherHandler implements WeatherHandlerInterface {
     public Future<JsonObject> getStats() {
         logger.debug("Getting service statistics");
         return weatherService.getStats();
+    }
+
+    /**
+     * Gets an item by ID.
+     *
+     * @param id the item ID
+     * @return a Future with the item as a JsonObject
+     */
+    public Future<JsonObject> getItem(String id) {
+        logger.debug("Getting item by ID: {}", id);
+        return weatherService.getItem(id);
+    }
+
+    /**
+     * Lists all items.
+     *
+     * @return a Future with the list of items as a JsonObject
+     */
+    public Future<JsonObject> listItems() {
+        logger.debug("Listing all items");
+        return weatherService.listItems();
+    }
+
+    /**
+     * Creates a new item.
+     *
+     * @param request the request containing the item data
+     * @return a Future with the created item as a JsonObject
+     */
+    public Future<JsonObject> createItem(JsonObject request) {
+        logger.debug("Creating new item: {}", request);
+        return weatherService.createItem(request);
+    }
+
+    /**
+     * Updates an existing item.
+     *
+     * @param request the request containing the item data and ID
+     * @return a Future with the updated item as a JsonObject
+     */
+    public Future<JsonObject> updateItem(JsonObject request) {
+        logger.debug("Updating item: {}", request);
+        return weatherService.updateItem(request);
+    }
+
+    /**
+     * Deletes an item by ID.
+     *
+     * @param id the item ID
+     * @return a Future with the deletion result as a JsonObject
+     */
+    public Future<JsonObject> deleteItem(String id) {
+        logger.debug("Deleting item by ID: {}", id);
+        return weatherService.deleteItem(id);
     }
 }
